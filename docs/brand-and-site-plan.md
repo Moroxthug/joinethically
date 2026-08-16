@@ -101,12 +101,21 @@ plan, v2). Summary of the system:
   to render the white ground unconditionally, the same way a print magazine wouldn't reflow itself
   dark for a reader with dark mode on.
 - **Photography:** generated editorial photos (documentary/muted style, matching the palette) now
-  stand in for a lead investigation photo and Editor's Picks thumbnails. One earlier mistake worth
-  noting: the bento grid's oversized "Ethical Products" tile was originally just enlarged with the
-  same content stretched to fill it, which left a large dead-space gap and read as broken rather
-  than intentional. Fixed by giving that tile an actual reason to be bigger — a photo, a "Flagship
+  stand in for a lead investigation photo, Editor's Picks thumbnails, the flagship pillar tile, and
+  guest-post headers (matched thematically — e.g. the mill photo for the essay about factory work,
+  the refill-shop photo for the essay by Anew Refill's founder). One earlier mistake worth noting:
+  the bento grid's oversized "Ethical Products" tile was originally just enlarged with the same
+  content stretched to fill it, which left a large dead-space gap and read as broken rather than
+  intentional. Fixed by giving that tile an actual reason to be bigger — a photo, a "Flagship
   pillar" label, and a live "top-rated this week" callout — a reminder that size/hierarchy in this
   layout has to be earned by real content, not applied as pure decoration.
+- **Archive + directories section:** added above the footer — a two-column "older, but not less
+  true" list of past stories (category tag, headline, date) plus a four-card row linking into each
+  directory (Products, Companies, Doing Good, Good Living) with live counts. Deliberately kept
+  photo-free: reusing the same handful of generated photos a third or fourth time across an index
+  of many stories would read as repetition, not design, so this section leans on typography and a
+  category-color system instead. Real production content would give each archive story its own
+  photo; this is a placeholder pattern to swap once there's a real backlog to draw thumbnails from.
 
 ## 5a. Admin tools — prototyped
 
