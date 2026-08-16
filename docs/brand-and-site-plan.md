@@ -100,6 +100,13 @@ plan, v2). Summary of the system:
   first pass of the mockup (it silently went dark under a dark-mode browser) and has been corrected
   to render the white ground unconditionally, the same way a print magazine wouldn't reflow itself
   dark for a reader with dark mode on.
+- **Photography:** generated editorial photos (documentary/muted style, matching the palette) now
+  stand in for a lead investigation photo and Editor's Picks thumbnails. One earlier mistake worth
+  noting: the bento grid's oversized "Ethical Products" tile was originally just enlarged with the
+  same content stretched to fill it, which left a large dead-space gap and read as broken rather
+  than intentional. Fixed by giving that tile an actual reason to be bigger — a photo, a "Flagship
+  pillar" label, and a live "top-rated this week" callout — a reminder that size/hierarchy in this
+  layout has to be earned by real content, not applied as pure decoration.
 
 ## 5a. Admin tools — prototyped
 
