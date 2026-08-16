@@ -64,23 +64,60 @@ sourcing exposed, which none of the comparables do well.
 ## 5. Design direction
 
 Full direction is expressed as a working homepage mockup (see artifact delivered alongside this
-plan). Summary of the system:
+plan, v2). Summary of the system:
 
-- **Palette:** nameable, not a gradient — paper white ground (`#faf9f6`), near-black ink
-  (`#191b17`), a considered deep verdigris-green accent (`#2f6f5e`) for trust/interactive elements,
-  and a muted gold (`#b9822e`) reserved for editorial signals (Editor's Picks, guest-post tags,
-  ratings emphasis). Deliberately avoids both the "eco bright green" cliché and the "warm
+- **Background:** white is mandatory, not literally flat — a top-to-bottom gradient from pure
+  white (`#ffffff`) into a slightly darker warm off-white (`#efece3`), plus a very low-opacity
+  procedural grain (SVG `feTurbulence`, ~5% opacity, multiply blend) over the whole page. This is
+  the main lever for "human made, not AI-generated": a dead-flat white reads as a template; a
+  faint gradient + paper grain reads as considered and physical, the way an actual printed page
+  or a hand-set magazine cover does, without adding any color.
+- **Palette:** nameable, not a gradient of hues — near-black ink (`#191b17`), a considered deep
+  verdigris-green accent (`#2f6f5e`) for trust/interactive elements, and a muted gold (`#b9822e`)
+  reserved for editorial signals (Editor's Picks, guest-post tags, ratings emphasis, hand-set
+  annotations). Deliberately avoids both the "eco bright green" cliché and the "warm
   cream + terracotta" AI-generated-blog cliché.
 - **Type:** literary serif (Iowan Old Style / Palatino / Georgia stack, upgrade to a licensed
   serif such as Canela or GT Sectra in production) for headlines and editorial voice; clean
   system sans for UI, captions, and data, so ratings and numbers stay legible and utilitarian
   against the editorial voice of headlines.
-  contra the "warm" editorial layer.
-- **Layout:** magazine homepage — asymmetric hero (lead investigation + Editor's Picks rail),
-  hairline-divided pillar grid, a real scorecard component (not just stars), guest-post strip,
-  and a forum preview panel that visibly shows the AI companion's role (sourcing and flagging
-  claims — assistive, not a chatbot gimmick).
+- **Layout:** magazine homepage with an asymmetric hero (lead investigation, a pull-quote pulled
+  from the piece, and the Editor's Picks rail), a bento-style pillar grid (Ethical Products as an
+  oversized lead tile rather than six identical boxes — variation in tile size is doing real work,
+  not decoration: it signals which pillar is the flagship), a real scorecard component with a
+  hand-drawn stamp-style verdict badge (irregular border-radius, slight rotation — deliberately not
+  a perfect pill, evokes an editor's actual rubber stamp), guest-post strip, and a forum preview
+  panel that visibly shows the AI companion's role (sourcing and flagging claims — assistive, not a
+  chatbot gimmick).
+- **Human-made signals:** small hand-set touches placed deliberately, not scattered — a
+  script-style annotation reading "picked by hand, not by algorithm" on the Editor's Picks rail, an
+  asterism (⁂) mark on section dividers instead of a plain rule, and an editor's marginal note on
+  the ratings methodology ("we re-check every score by hand"). These aren't decoration: on a site
+  whose whole value proposition is human editorial judgment over automated/brand-fed content, the
+  design should keep saying so.
 - Full light/dark token system; production build should support both.
+
+## 5a. Admin tools — prototyped
+
+Two admin surfaces were prototyped as working (client-side) interactive tools, to validate the UX
+before they're built against a real CMS/backend:
+
+- **Article editor** — meta form (headline, dek, section, byline, tags, guest-post flag, status)
+  on the left; a live preview on the right rendered in the actual site typography, with a minimal
+  rich-text toolbar (bold/italic/heading/quote/list/link) for the body. Toggling "this is a rated
+  review" reveals People/Planet/Transparency sliders that compute the overall score and verdict
+  band live — so an editor writing a scorecard sees exactly what a reader will see, including the
+  stamp badge, before publishing.
+- **Homepage organiser** — every homepage module (lead story, Editor's Picks, pillar grid,
+  scorecard spotlight, guest posts, forum preview, newsletter band) as a draggable, show/hide row,
+  with a live mini-preview of the resulting homepage. Four starting templates are included
+  (News-led / Shopping-led / Community-led / Campaign spotlight) that set a sensible default order,
+  which an editor can then hand-adjust by dragging — this is the "different templates of order"
+  requested, plus free-form reordering on top of any of them.
+
+Both are self-contained prototypes (state persists to the browser only) meant to prove out the
+interaction model — production versions would read/write the real CMS content model instead of
+`localStorage`.
 
 ## 6. AI-assisted forum, scoped
 
@@ -128,10 +165,43 @@ plan). Summary of the system:
   ("this brand's score dropped — here's why"), explore an API/widget so other sites can embed
   JoinEthically scores (this is Good On You's actual moat and worth targeting later).
 
-## 10. Open questions for the founder
+## 10. Revenue model — recommendation
+
+The constraint that overrides everything else here: on a site whose entire product *is* "you can
+trust our ratings," any revenue stream that looks like it could be bought is an existential risk,
+not just a UX blemish. That rules out display ads (puts random, unvetted brands right next to
+editorial judgment) and rules out anything resembling pay-for-placement or pay-for-a-better-score.
+Three legs, roughly in this priority order:
+
+1. **Reader membership/subscription — the trust-aligned core.** A paid tier (early access to
+   investigations, an ad-free/tracker-free reading experience, maybe a members-only forum room)
+   funded directly by the people the ratings serve, not by the brands being rated. This is slow to
+   build revenue but it's the leg that actually reinforces "we work for readers," which is the
+   whole brand. The Good Trade and Ethical Consumer both lean partly on this; it should be the
+   spine here, not an afterthought.
+2. **Non-conflicted affiliate revenue on Ethical Products — the near-term engine.** Affiliate links
+   only on items that already cleared the independent scorecard; the commission rate never affects
+   score, ranking, or which items get reviewed at all, and that firewall is stated on every page it
+   applies to (not just buried in a policy page). This is realistic near-term revenue (people
+   reading a "best ethical base layer" piece are already in buying mode) as long as the disclosure
+   is loud, not quiet.
+3. **Ratings-data licensing — the long-term moat, once the database has scale.** This is actually
+   Good On You's real business model underneath the consumer-facing site: license the
+   People/Planet/Transparency scorecard data via API/widget to retailers, other publishers, or
+   procurement tools. Not viable at launch (not enough entities scored yet), but it's the highest-
+   margin, most defensible leg once the Ethical Companies database has real coverage — worth
+   designing the ratings data model in section 4 to be licensable from day one rather than
+   retrofitting it later.
+
+Explicitly deprioritized: brand-sponsored "guest" content that isn't clearly labeled as sponsored
+(guest posts stay contributor-voice, unpaid-or-transparently-paid, editorially reviewed — see
+section 7), and programmatic display advertising.
+
+## 11. Open questions for the founder
 
 - Category priority for launch — fashion/beauty first (largest existing comparable audience) or
   broader from day one?
-- Revenue model — newsletter/membership, non-brand-conflicted affiliate links on Products, or ad
-  supported? This has real design and editorial-independence implications.
 - Forum: build vs. embed a proven engine (recommend embed for speed to credible v1).
+- Membership pricing/tiering, and how much of the ratings database stays free vs. gated — free
+  ratings browsing is probably right for SEO and trust, but worth deciding deliberately rather than
+  by default.
