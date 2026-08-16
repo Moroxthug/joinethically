@@ -95,7 +95,11 @@ plan, v2). Summary of the system:
   the ratings methodology ("we re-check every score by hand"). These aren't decoration: on a site
   whose whole value proposition is human editorial judgment over automated/brand-fed content, the
   design should keep saying so.
-- Full light/dark token system; production build should support both.
+- **Single-theme by design, not by default:** white/paper is a brand requirement, so the site does
+  not switch to a dark palette based on the visitor's OS or app theme — this was a mistake in the
+  first pass of the mockup (it silently went dark under a dark-mode browser) and has been corrected
+  to render the white ground unconditionally, the same way a print magazine wouldn't reflow itself
+  dark for a reader with dark mode on.
 
 ## 5a. Admin tools — prototyped
 
