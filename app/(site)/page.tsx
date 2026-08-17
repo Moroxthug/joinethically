@@ -147,7 +147,7 @@ export default function HomePage() {
             </div>
             <div
               className="pillar pillar-d pillar-photo tint-accent"
-              style={{ ["--photo-url" as string]: "url(/images/pick-coffee.jpg)" }}
+              style={{ ["--photo-url" as string]: "url(/images/hands-donation-boxes.jpg)" }}
             >
               <div className="pillar-photo-content">
                 <div className="mark">◇</div>
@@ -161,7 +161,7 @@ export default function HomePage() {
             </div>
             <div
               className="pillar pillar-e pillar-photo tint-ink"
-              style={{ ["--photo-url" as string]: "url(/images/hero-mill.jpg)", backgroundPosition: "20% center" }}
+              style={{ ["--photo-url" as string]: "url(/images/newsroom-desk.jpg)" }}
             >
               <div className="pillar-photo-content">
                 <div className="mark">◆</div>

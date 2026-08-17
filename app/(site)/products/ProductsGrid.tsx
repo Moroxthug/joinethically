@@ -127,6 +127,14 @@ const CATEGORIES: { name: string; items: Product[] }[] = [
   },
 ];
 
+const CATEGORY_PHOTO: Record<string, string> = {
+  Fashion: "/images/pick-wool.jpg",
+  Home: "/images/pick-refill.jpg",
+  Beauty: "/images/skincare-shelf.jpg",
+  Tech: "/images/phone-repair.jpg",
+  Food: "/images/pick-coffee.jpg",
+};
+
 export default function ProductsGrid() {
   const [active, setActive] = useState("All");
   const groups = active === "All" ? CATEGORIES : CATEGORIES.filter((g) => g.name === active);
@@ -153,9 +161,16 @@ export default function ProductsGrid() {
             {group.items.map((p) => (
               <div className="mini-card" key={p.name}>
                 <div className="mini-card-head">
-                  <div>
-                    <h3>{p.name}</h3>
-                    <p className="cat">{p.brand}</p>
+                  <div className="mini-card-name-row">
+                    <div
+                      className="mini-card-thumb"
+                      style={{ ["--photo-url" as string]: `url(${CATEGORY_PHOTO[group.name]})` }}
+                      aria-hidden="true"
+                    />
+                    <div>
+                      <h3>{p.name}</h3>
+                      <p className="cat">{p.brand}</p>
+                    </div>
                   </div>
                   <span className="score-chip num">
                     {p.score} · {p.verdict}

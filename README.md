@@ -29,7 +29,10 @@ npm run dev      # http://localhost:3000
 - **Logo** (`components/Logo.tsx`) — the `Join`/`Ethically` wordmark, kept as the site's default
   logo. Used in the header, footer, and Studio's sidebar so it never drifts.
 - Generated placeholder photography lives in `public/images/`; swap for real photography before
-  launch.
+  launch. Generated via [Pollinations.ai](https://pollinations.ai)'s free, no-signup image
+  endpoint (anonymous tier, no API key/credits) — every image was reviewed by hand before use,
+  since free/anonymous generation has no content moderation guarantee. Not licensed stock photos;
+  do not rely on these past the prototype stage.
 
 ## Not built yet
 

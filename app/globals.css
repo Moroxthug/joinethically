@@ -1158,6 +1158,21 @@ footer {
   align-items: flex-start;
   gap: 12px;
 }
+.mini-card-thumb {
+  width: 46px;
+  height: 46px;
+  border-radius: 6px;
+  background-image: var(--photo-url);
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+  border: 1px solid var(--line);
+}
+.mini-card-name-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
 .mini-card-head h3 {
   font-size: 1.02rem;
   line-height: 1.3;

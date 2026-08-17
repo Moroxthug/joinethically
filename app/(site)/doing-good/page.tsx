@@ -8,7 +8,7 @@ export default function DoingGoodPage() {
     <div className="wrap">
       <div
         className="page-banner"
-        style={{ ["--photo-url" as string]: "url(/images/pick-coffee.jpg)", backgroundPosition: "center 70%" }}
+        style={{ ["--photo-url" as string]: "url(/images/hands-donation-boxes.jpg)" }}
       >
         <span>Where your time or money goes furthest</span>
       </div>

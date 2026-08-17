@@ -113,6 +113,13 @@ const CATEGORIES: { name: string; items: Company[] }[] = [
   },
 ];
 
+const CATEGORY_PHOTO: Record<string, string> = {
+  "Apparel & Footwear": "/images/pick-wool.jpg",
+  "Food & Beverage": "/images/pick-coffee.jpg",
+  "Beauty & Home": "/images/skincare-shelf.jpg",
+  "Tech & Electronics": "/images/phone-repair.jpg",
+};
+
 export default function CompaniesGrid() {
   const [active, setActive] = useState("All");
   const groups = active === "All" ? CATEGORIES : CATEGORIES.filter((g) => g.name === active);
@@ -139,9 +146,16 @@ export default function CompaniesGrid() {
             {group.items.map((c) => (
               <div className="mini-card" key={c.name}>
                 <div className="mini-card-head">
-                  <div>
-                    <h3>{c.name}</h3>
-                    <p className="cat">{c.category}</p>
+                  <div className="mini-card-name-row">
+                    <div
+                      className="mini-card-thumb"
+                      style={{ ["--photo-url" as string]: `url(${CATEGORY_PHOTO[group.name]})` }}
+                      aria-hidden="true"
+                    />
+                    <div>
+                      <h3>{c.name}</h3>
+                      <p className="cat">{c.category}</p>
+                    </div>
                   </div>
                   <span className={`verdict-tag ${VERDICT_CLASS[c.verdict]} num`}>
                     {c.score} · {c.verdict}
