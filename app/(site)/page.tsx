@@ -16,8 +16,18 @@ export default function HomePage() {
         <section className="hero" style={{ borderTop: "none", paddingTop: 56 }}>
           <div className="fade-up">
             <p className="eyebrow label">Investigation</p>
-            <div className="hero-art">
-              <span>Inside an independent wool mill, this spring</span>
+            <div
+              className="video-card"
+              style={{ ["--photo-url" as string]: "url(/images/hero-mill.jpg)", marginBottom: 22, aspectRatio: "16 / 10" }}
+              role="button"
+              aria-label="Play: inside an independent wool mill, this spring"
+            >
+              <span className="video-duration">3:12</span>
+              <span className="video-play" aria-hidden="true">▶</span>
+              <div className="video-caption">
+                <div className="vc-title">Inside an independent wool mill, this spring</div>
+                <div className="vc-meta">Watch the mini-documentary</div>
+              </div>
             </div>
             <h1>
               Inside the fast-fashion supply chain: what &quot;recycled polyester&quot; actually
@@ -107,50 +117,75 @@ export default function HomePage() {
                 <span className="count num">1,204 products rated</span>
               </div>
             </div>
-            <div className="pillar pillar-b">
-              <div className="mark">◆</div>
-              <h3>Ethical Companies</h3>
-              <p>
-                Brand scorecards built from public disclosures, labor records, and supply-chain
-                audits — updated as new evidence lands.
-              </p>
-              <span className="count num">340 companies tracked</span>
+            <div
+              className="pillar pillar-b pillar-photo tint-accent"
+              style={{ ["--photo-url" as string]: "url(/images/pick-refill.jpg)" }}
+            >
+              <div className="pillar-photo-content">
+                <div className="mark">◆</div>
+                <h3>Ethical Companies</h3>
+                <p>
+                  Brand scorecards built from public disclosures, labor records, and supply-chain
+                  audits — updated as new evidence lands.
+                </p>
+                <span className="count num">340 companies tracked</span>
+              </div>
             </div>
-            <div className="pillar pillar-c">
-              <div className="mark">◇</div>
-              <h3>Good Living</h3>
-              <p>
-                Practical guidance on living with your values intact — money, food, relationships,
-                and the small daily choices.
-              </p>
-              <span className="count num">210 guides</span>
+            <div
+              className="pillar pillar-c pillar-photo tint-gold"
+              style={{ ["--photo-url" as string]: "url(/images/hero-mill.jpg)", backgroundPosition: "68% center" }}
+            >
+              <div className="pillar-photo-content">
+                <div className="mark">◇</div>
+                <h3>Good Living</h3>
+                <p>
+                  Practical guidance on living with your values intact — money, food,
+                  relationships, and the small daily choices.
+                </p>
+                <span className="count num">210 guides</span>
+              </div>
             </div>
-            <div className="pillar pillar-d">
-              <div className="mark">◇</div>
-              <h3>Doing Good</h3>
-              <p>
-                Vetted charities, volunteering opportunities, and giving guides — where your time
-                or money goes furthest.
-              </p>
-              <span className="count num">96 causes vetted</span>
+            <div
+              className="pillar pillar-d pillar-photo tint-accent"
+              style={{ ["--photo-url" as string]: "url(/images/pick-coffee.jpg)" }}
+            >
+              <div className="pillar-photo-content">
+                <div className="mark">◇</div>
+                <h3>Doing Good</h3>
+                <p>
+                  Vetted charities, volunteering opportunities, and giving guides — where your
+                  time or money goes furthest.
+                </p>
+                <span className="count num">96 causes vetted</span>
+              </div>
             </div>
-            <div className="pillar pillar-e">
-              <div className="mark">◆</div>
-              <h3>News &amp; Investigations</h3>
-              <p>
-                Original reporting and a daily digest of the ethics, sustainability, and
-                accountability stories that matter.
-              </p>
-              <span className="count num">Updated daily</span>
+            <div
+              className="pillar pillar-e pillar-photo tint-ink"
+              style={{ ["--photo-url" as string]: "url(/images/hero-mill.jpg)", backgroundPosition: "20% center" }}
+            >
+              <div className="pillar-photo-content">
+                <div className="mark">◆</div>
+                <h3>News &amp; Investigations</h3>
+                <p>
+                  Original reporting and a daily digest of the ethics, sustainability, and
+                  accountability stories that matter.
+                </p>
+                <span className="count num">Updated daily</span>
+              </div>
             </div>
-            <div className="pillar pillar-f">
-              <div className="mark">◇</div>
-              <h3>The Forum</h3>
-              <p>
-                Ask the community, get sourced answers, and let our AI companion surface the
-                relevant reporting as you go.
-              </p>
-              <span className="count num">8,900 members</span>
+            <div
+              className="pillar pillar-f pillar-photo tint-gold"
+              style={{ ["--photo-url" as string]: "url(/images/pick-refill.jpg)", backgroundPosition: "80% center" }}
+            >
+              <div className="pillar-photo-content">
+                <div className="mark">◇</div>
+                <h3>The Forum</h3>
+                <p>
+                  Ask the community, get sourced answers, and let our AI companion surface the
+                  relevant reporting as you go.
+                </p>
+                <span className="count num">8,900 members</span>
+              </div>
             </div>
           </div>
         </div>
@@ -215,6 +250,61 @@ export default function HomePage() {
               </div>
             </div>
             <div className="sc-foot">Sourced from 14 public disclosures · last verified 3 days ago</div>
+          </div>
+        </div>
+      </section>
+
+      <section className="tight" id="watch">
+        <div className="wrap">
+          <div className="section-head">
+            <div>
+              <p className="label section-mark">Watch</p>
+              <h2>This week&apos;s reporting, on video</h2>
+            </div>
+            <a className="section-link" href="#">
+              All videos →
+            </a>
+          </div>
+          <div className="guest-strip">
+            <div
+              className="video-card"
+              style={{ ["--photo-url" as string]: "url(/images/pick-coffee.jpg)", backgroundPosition: "30% 65%" }}
+              role="button"
+              aria-label="Play: how we verify a direct-trade claim"
+            >
+              <span className="video-duration">4:47</span>
+              <span className="video-play" aria-hidden="true">▶</span>
+              <div className="video-caption">
+                <div className="vc-title">How we verify a direct-trade claim</div>
+                <div className="vc-meta">Behind the scorecard</div>
+              </div>
+            </div>
+            <div
+              className="video-card"
+              style={{ ["--photo-url" as string]: "url(/images/pick-refill.jpg)", backgroundPosition: "70% 30%" }}
+              role="button"
+              aria-label="Play: a tour of a zero-waste refill shop"
+            >
+              <span className="video-duration">2:35</span>
+              <span className="video-play" aria-hidden="true">▶</span>
+              <div className="video-caption">
+                <div className="vc-title">Inside a zero-waste refill shop</div>
+                <div className="vc-meta">Editor&apos;s Pick spotlight</div>
+              </div>
+            </div>
+            <div
+              className="video-card"
+              style={{ ["--photo-url" as string]: "url(/images/pick-wool.jpg)" }}
+              role="button"
+              aria-label="Play: reader Q and A on fast fashion"
+            >
+              <span className="video-duration">6:02</span>
+              <span className="video-play" aria-hidden="true">▶</span>
+              <div className="video-caption">
+                <div className="vc-title">Reader Q&amp;A: is any fast fashion defensible?</div>
+                <div className="vc-meta">From the forum</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

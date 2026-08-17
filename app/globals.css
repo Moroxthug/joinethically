@@ -503,6 +503,177 @@ section.tight {
   grid-area: f;
 }
 
+/* photographic pillar tiles (b/c/d/e/f) — duotone treatment so the same
+   handful of source photos read as a deliberate style, not repetition */
+.pillar-photo {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  gap: 0;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: multiply;
+}
+.pillar-photo.tint-accent {
+  background-image: linear-gradient(rgba(30, 74, 61, 0.62), rgba(30, 74, 61, 0.62)),
+    linear-gradient(180deg, rgba(10, 12, 9, 0) 45%, rgba(10, 12, 9, 0.55) 100%), var(--photo-url);
+}
+.pillar-photo.tint-gold {
+  background-image: linear-gradient(rgba(122, 86, 30, 0.58), rgba(122, 86, 30, 0.58)),
+    linear-gradient(180deg, rgba(10, 12, 9, 0) 45%, rgba(10, 12, 9, 0.55) 100%), var(--photo-url);
+}
+.pillar-photo.tint-ink {
+  background-image: linear-gradient(rgba(20, 22, 17, 0.68), rgba(20, 22, 17, 0.68)),
+    linear-gradient(180deg, rgba(10, 12, 9, 0) 45%, rgba(10, 12, 9, 0.55) 100%), var(--photo-url);
+}
+.pillar-photo-content {
+  position: absolute;
+  inset: 0;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 6px;
+}
+.pillar-photo-content .mark {
+  background: rgba(255, 255, 255, 0.22);
+  color: #fdfcf7;
+}
+.pillar-photo h3 {
+  color: #fdfcf7;
+  font-size: 1.05rem;
+}
+.pillar-photo p {
+  color: rgba(253, 252, 247, 0.86);
+  flex: none;
+}
+.pillar-photo .count {
+  color: rgba(253, 252, 247, 0.74);
+}
+
+/* photo banners for the pillar index pages */
+.page-banner {
+  aspect-ratio: 21 / 6;
+  border-radius: 4px;
+  margin: 32px 0 8px;
+  position: relative;
+  overflow: hidden;
+  background-image: linear-gradient(180deg, rgba(20, 22, 17, 0) 55%, rgba(20, 22, 17, 0.62) 100%),
+    var(--photo-url);
+  background-size: cover;
+  background-position: center;
+}
+.page-banner span {
+  position: absolute;
+  bottom: 16px;
+  left: 18px;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.92);
+  text-transform: uppercase;
+}
+
+/* video cards — thumbnail + play affordance, used until real video embeds ship */
+.video-card {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background-image: var(--photo-url);
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.video-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(30, 74, 61, 0.16) 0%, rgba(10, 12, 9, 0.6) 100%);
+}
+.video-play {
+  position: relative;
+  z-index: 1;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(253, 252, 247, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  font-size: 1.1rem;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.video-card:hover .video-play {
+  transform: scale(1.08);
+  background: #fff;
+}
+.video-caption {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  z-index: 1;
+  font-family: var(--font-sans);
+  color: #fdfcf7;
+}
+.video-caption .vc-title {
+  font-family: var(--font-serif);
+  font-size: 1.02rem;
+  margin-bottom: 3px;
+}
+.video-caption .vc-meta {
+  font-size: 0.72rem;
+  color: rgba(253, 252, 247, 0.78);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.video-duration {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #fdfcf7;
+  background: rgba(10, 12, 9, 0.55);
+  border-radius: 4px;
+  padding: 3px 7px;
+}
+
+/* filter chips — client-side category filtering on directory pages */
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 36px;
+}
+.chip {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  background: var(--bg-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: 20px;
+  padding: 7px 15px;
+  cursor: pointer;
+  transition: background 0.16s ease, color 0.16s ease, border-color 0.16s ease;
+}
+.chip:hover {
+  border-color: var(--accent-ink);
+  color: var(--accent-ink);
+}
+.chip.active {
+  background: var(--accent-ink);
+  border-color: var(--accent-ink);
+  color: #fdfcf7;
+}
+
 /* rating scorecard */
 .scorecard-wrap {
   display: grid;
