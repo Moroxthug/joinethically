@@ -1165,6 +1165,142 @@ footer {
   align-items: start;
 }
 
+/* liveliness: activity strip, pulse, hover lift, entrance motion */
+.live-strip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 11px 32px;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  background: var(--bg-raised);
+  border-bottom: 1px solid var(--line);
+}
+.live-strip strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+.live-strip .sep {
+  color: var(--line-strong);
+}
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  animation: pulse-ring 2.2s ease-out infinite;
+}
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(47, 111, 94, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(47, 111, 94, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(47, 111, 94, 0);
+  }
+}
+
+.trust-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--accent-ink);
+  background: var(--accent-soft);
+  border-radius: 20px;
+  padding: 6px 13px 6px 10px;
+  margin-bottom: 18px;
+}
+
+/* hover lift — cards feel responsive, not static */
+.pillar,
+.pick-item,
+.guest-card,
+.directory-card,
+.thread,
+.mini-card,
+.cause-card,
+.digest-item {
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+.pillar:hover,
+.mini-card:hover,
+.cause-card:hover,
+.guest-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(25, 27, 23, 0.09);
+  border-color: var(--line-strong);
+}
+.pick-item:hover {
+  transform: translateX(3px);
+}
+.directory-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(25, 27, 23, 0.08);
+}
+.thread {
+  cursor: pointer;
+  border-radius: 4px;
+}
+.thread:hover {
+  background: var(--accent-soft);
+  transform: translateX(3px);
+}
+.archive-row {
+  transition: padding-left 0.18s ease, color 0.18s ease;
+}
+.archive-row:hover {
+  padding-left: 6px;
+}
+.archive-row:hover .archive-title {
+  color: var(--accent-ink);
+}
+
+/* score bars grow in on load instead of appearing static */
+.sc-bar-fill {
+  transform-origin: left;
+  animation: grow-bar 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.sc-bar-row:nth-child(1) .sc-bar-fill {
+  animation-delay: 0.1s;
+}
+.sc-bar-row:nth-child(2) .sc-bar-fill {
+  animation-delay: 0.25s;
+}
+.sc-bar-row:nth-child(3) .sc-bar-fill {
+  animation-delay: 0.4s;
+}
+@keyframes grow-bar {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* gentle staggered entrance for the hero on first paint */
+.fade-up {
+  animation: fade-up 0.6s ease both;
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 860px) {
   .item-grid {
     grid-template-columns: 1fr;
@@ -1222,6 +1358,29 @@ footer {
 
 @media (prefers-reduced-motion: reduce) {
   nav.primary a::after {
+    transition: none;
+  }
+  .pulse-dot,
+  .sc-bar-fill,
+  .fade-up {
+    animation: none !important;
+  }
+  .fade-up {
+    opacity: 1;
+    transform: none;
+  }
+  .sc-bar-fill {
+    transform: scaleX(1);
+  }
+  .pillar,
+  .pick-item,
+  .guest-card,
+  .directory-card,
+  .thread,
+  .mini-card,
+  .cause-card,
+  .digest-item,
+  .archive-row {
     transition: none;
   }
 }

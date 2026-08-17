@@ -1,9 +1,20 @@
 export default function HomePage() {
   return (
     <>
+      <div className="live-strip">
+        <span className="pulse-dot" aria-hidden="true" />
+        <span>
+          <strong>Just added:</strong> Verge Studio scorecard · 4 min ago
+        </span>
+        <span className="sep">·</span>
+        <span>New thread in Good Living · 12 min ago</span>
+        <span className="sep">·</span>
+        <span>Loop &amp; Warp score updated to 54 · 1 hr ago</span>
+      </div>
+
       <div className="wrap">
         <section className="hero" style={{ borderTop: "none", paddingTop: 56 }}>
-          <div>
+          <div className="fade-up">
             <p className="eyebrow label">Investigation</p>
             <div className="hero-art">
               <span>Inside an independent wool mill, this spring</span>
@@ -25,9 +36,12 @@ export default function HomePage() {
               <span className="avatar">MK</span>
               <span>Mira Kessler · Investigations Editor · 11 min read</span>
             </div>
+            <span className="trust-chip" style={{ marginTop: 18 }}>
+              ✦ Independent · ad-free · reader-funded
+            </span>
           </div>
 
-          <div className="picks" id="editors-picks">
+          <div className="picks fade-up" id="editors-picks" style={{ animationDelay: "0.15s" }}>
             <div className="picks-head">
               <div>
                 <p className="label">Editor&apos;s Picks — August</p>
@@ -307,7 +321,11 @@ export default function HomePage() {
             <div className="panel">
               <div className="panel-head">
                 <p className="label">Thread preview</p>
-                <span className="label" style={{ color: "var(--gold-ink)" }}>
+                <span
+                  className="label"
+                  style={{ color: "var(--gold-ink)", display: "inline-flex", alignItems: "center", gap: 7 }}
+                >
+                  <span className="pulse-dot" style={{ background: "var(--gold)" }} aria-hidden="true" />
                   AI companion active
                 </span>
               </div>
