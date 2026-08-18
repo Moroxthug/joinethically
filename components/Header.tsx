@@ -17,26 +17,34 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="site">
-      <div className="site-inner">
-        <Logo />
-        <nav className="primary">
-          {NAV.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              aria-current={pathname?.startsWith(item.href) ? "page" : undefined}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-        <div className="header-actions">
-          <button className="btn" type="button">
-            Join free
-          </button>
+    <>
+      <div className="masthead-bar">
+        <div className="site-inner">
+          <span>Tuesday, August 18, 2026 · Edition No. 214</span>
+          <span className="masthead-tagline">Independent · ad-free · reader-funded</span>
         </div>
       </div>
-    </header>
+      <header className="site">
+        <div className="site-inner">
+          <Logo />
+          <nav className="primary">
+            {NAV.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={pathname?.startsWith(item.href) ? "page" : undefined}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+          <div className="header-actions">
+            <button className="btn" type="button">
+              Join free
+            </button>
+          </div>
+        </div>
+      </header>
+    </>
   );
 }

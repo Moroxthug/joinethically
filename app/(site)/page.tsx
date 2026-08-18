@@ -15,22 +15,9 @@ export default function HomePage() {
       </div>
 
       <div className="wrap">
-        <section className="hero" style={{ borderTop: "none", paddingTop: 56 }}>
-          <div className="fade-up">
+        <section style={{ borderTop: "none", paddingTop: 48, paddingBottom: 0 }}>
+          <div className="hero-top fade-up">
             <p className="eyebrow label">Investigation</p>
-            <Link
-              href="/articles/fast-fashion-recycled-polyester"
-              className="video-card"
-              style={{ ["--photo-url" as string]: "url(/images/hero-mill.jpg)", marginBottom: 22, aspectRatio: "16 / 10" }}
-              aria-label="Read the investigation: inside an independent wool mill, this spring"
-            >
-              <span className="video-duration">3:12</span>
-              <span className="video-play" aria-hidden="true">▶</span>
-              <div className="video-caption">
-                <div className="vc-title">Inside an independent wool mill, this spring</div>
-                <div className="vc-meta">Watch the mini-documentary</div>
-              </div>
-            </Link>
             <h1>
               <Link href="/articles/fast-fashion-recycled-polyester" className="title-link">
                 Inside the fast-fashion supply chain: what &quot;recycled polyester&quot; actually
@@ -45,6 +32,24 @@ export default function HomePage() {
                 Read the full investigation →
               </Link>
             </p>
+          </div>
+        </section>
+
+        <section className="hero" style={{ borderTop: "none", paddingTop: 32 }}>
+          <div className="fade-up" style={{ animationDelay: "0.08s" }}>
+            <Link
+              href="/articles/fast-fashion-recycled-polyester"
+              className="video-card"
+              style={{ ["--photo-url" as string]: "url(/images/hero-mill.jpg)", marginBottom: 22, aspectRatio: "16 / 10" }}
+              aria-label="Read the investigation: inside an independent wool mill, this spring"
+            >
+              <span className="video-duration">3:12</span>
+              <span className="video-play" aria-hidden="true">▶</span>
+              <div className="video-caption">
+                <div className="vc-title">Inside an independent wool mill, this spring</div>
+                <div className="vc-meta">Watch the mini-documentary</div>
+              </div>
+            </Link>
             <blockquote className="pullquote">
               The labels are accurate. The volume math behind them isn&apos;t — and until now, no
               one outside the mills was checking.
@@ -261,7 +266,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="tight" id="watch">
+      <section className="tight section-dark" id="watch">
         <div className="wrap">
           <div className="section-head">
             <div>

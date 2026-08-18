@@ -108,6 +108,22 @@ h3 {
   font-variant-numeric: tabular-nums;
 }
 
+/* masthead date bar */
+.masthead-bar {
+  background: var(--ink);
+  color: rgba(253, 252, 247, 0.72);
+}
+.masthead-bar .site-inner {
+  padding: 7px 32px;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  justify-content: space-between;
+}
+.masthead-tagline {
+  color: var(--gold);
+}
+
 /* header */
 header.site {
   border-bottom: 1px solid var(--line);
@@ -186,6 +202,16 @@ nav.primary a[aria-current="page"]::after {
 }
 
 /* hero */
+.hero-top {
+  padding-bottom: 8px;
+  max-width: 920px;
+}
+.hero-top .eyebrow {
+  margin-bottom: 14px;
+}
+.hero-top .hero-dek {
+  max-width: 68ch;
+}
 .hero {
   padding: 56px 32px 64px;
   display: grid;
@@ -208,7 +234,7 @@ nav.primary a[aria-current="page"]::after {
 }
 .hero-art {
   aspect-ratio: 16 / 10;
-  border-radius: 4px;
+  border-radius: 2px;
   margin-bottom: 22px;
   background-image: linear-gradient(180deg, rgba(20, 22, 17, 0) 55%, rgba(20, 22, 17, 0.62) 100%),
     url("/images/hero-mill.jpg");
@@ -227,10 +253,10 @@ nav.primary a[aria-current="page"]::after {
   color: rgba(255, 255, 255, 0.92);
   text-transform: uppercase;
 }
-.hero h1 {
-  font-size: 2.6rem;
-  line-height: 1.12;
-  letter-spacing: -0.01em;
+.hero-top h1 {
+  font-size: clamp(2.6rem, 4.8vw, 4rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
 }
 .hero-dek {
   font-family: var(--font-sans);
@@ -372,8 +398,9 @@ section.tight {
   gap: 24px;
 }
 .section-head h2 {
-  font-size: 1.7rem;
+  font-size: clamp(1.7rem, 2.6vw, 2.15rem);
   margin-top: 8px;
+  letter-spacing: -0.01em;
 }
 .section-link {
   font-family: var(--font-sans);
@@ -554,7 +581,7 @@ section.tight {
 /* photo banners for the pillar index pages */
 .page-banner {
   aspect-ratio: 21 / 6;
-  border-radius: 4px;
+  border-radius: 2px;
   margin: 32px 0 8px;
   position: relative;
   overflow: hidden;
@@ -577,7 +604,7 @@ section.tight {
 /* video cards — thumbnail + play affordance, used until real video embeds ship */
 .video-card {
   position: relative;
-  border-radius: 6px;
+  border-radius: 2px;
   overflow: hidden;
   aspect-ratio: 16 / 9;
   background-image: var(--photo-url);
@@ -641,7 +668,7 @@ section.tight {
   font-weight: 600;
   color: #fdfcf7;
   background: rgba(10, 12, 9, 0.55);
-  border-radius: 4px;
+  border-radius: 2px;
   padding: 3px 7px;
 }
 
@@ -684,7 +711,8 @@ section.tight {
 .scorecard {
   background: var(--bg-raised);
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-top: 3px solid var(--accent-ink);
+  border-radius: 2px;
   padding: 28px 30px;
   box-shadow: var(--shadow);
   position: relative;
@@ -761,14 +789,14 @@ section.tight {
 }
 .sc-bar-track {
   height: 6px;
-  border-radius: 4px;
+  border-radius: 2px;
   background: var(--accent-soft);
   overflow: hidden;
 }
 .sc-bar-fill {
   height: 100%;
   background: var(--accent);
-  border-radius: 4px;
+  border-radius: 2px;
 }
 .sc-bar-row .val {
   font-family: var(--font-sans);
@@ -809,7 +837,7 @@ section.tight {
 }
 .guest-photo {
   aspect-ratio: 4 / 3;
-  border-radius: 4px;
+  border-radius: 2px;
   background-size: cover;
   background-position: center;
 }
@@ -885,7 +913,7 @@ section.tight {
 .panel {
   background: var(--bg-raised);
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: 2px;
   padding: 24px;
   box-shadow: var(--shadow);
 }
@@ -922,7 +950,7 @@ section.tight {
 }
 .msg.ai .msg-body {
   background: var(--gold-soft);
-  border-radius: 4px;
+  border-radius: 2px;
   padding: 12px 14px;
 }
 .msg.ai .who {
@@ -1102,8 +1130,9 @@ footer {
   padding: 18px 0 28px;
 }
 .article-head h1 {
-  font-size: clamp(2.1rem, 4vw, 3rem);
-  line-height: 1.1;
+  font-size: clamp(2.2rem, 4.6vw, 3.4rem);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
   margin: 14px 0 18px;
 }
 .article-dek {
@@ -1136,13 +1165,22 @@ footer {
   padding: 5px 12px;
 }
 .article-cover {
-  aspect-ratio: 16 / 8.5;
-  border-radius: 4px;
+  aspect-ratio: 21 / 9;
   overflow: hidden;
   background-image: var(--photo-url);
   background-size: cover;
   background-position: center;
   margin-bottom: 8px;
+  width: 100vw;
+  max-width: 1400px;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+@media (min-width: 1464px) {
+  .article-cover {
+    margin-left: calc(50% - 700px);
+    margin-right: calc(50% - 700px);
+  }
 }
 .article-cover-cap {
   font-family: var(--font-sans);
@@ -1254,7 +1292,7 @@ footer {
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 2px;
   background-image: var(--photo-url);
   background-size: cover;
   background-position: center;
@@ -1397,7 +1435,8 @@ a.article-row:hover h3 {
 .mini-card {
   background: var(--bg-raised);
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-top: 2px solid var(--ink);
+  border-radius: 2px;
   padding: 20px 22px;
   box-shadow: var(--shadow);
   display: flex;
@@ -1413,7 +1452,7 @@ a.article-row:hover h3 {
 .mini-card-thumb {
   width: 46px;
   height: 46px;
-  border-radius: 6px;
+  border-radius: 2px;
   background-image: var(--photo-url);
   background-size: cover;
   background-position: center;
@@ -1524,7 +1563,8 @@ a.article-row:hover h3 {
 .cause-card {
   background: var(--bg-raised);
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-top: 2px solid var(--gold);
+  border-radius: 2px;
   padding: 22px;
   box-shadow: var(--shadow);
 }
@@ -1565,7 +1605,7 @@ a.article-row:hover h3 {
 .digest-panel {
   background: var(--bg-raised);
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: 2px;
   padding: 24px;
   box-shadow: var(--shadow);
   height: fit-content;
@@ -1601,6 +1641,26 @@ a.article-row:hover h3 {
   grid-template-columns: 1fr 320px;
   gap: 48px;
   align-items: start;
+}
+
+/* dark full-bleed band — pacing contrast against the paper-white sections */
+.section-dark {
+  background: var(--ink);
+  border-top-color: rgba(253, 252, 247, 0.12);
+  margin: 0;
+}
+.section-dark .section-head h2,
+.section-dark h2 {
+  color: #fdfcf7;
+}
+.section-dark .section-mark {
+  color: rgba(253, 252, 247, 0.6);
+}
+.section-dark .section-link {
+  color: var(--gold);
+}
+.section-dark .video-card {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
 }
 
 /* liveliness: activity strip, pulse, hover lift, entrance motion */
@@ -1685,7 +1745,7 @@ a.article-row:hover h3 {
 }
 .thread {
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 .thread:hover {
   background: var(--accent-soft);
