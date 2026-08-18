@@ -15,7 +15,25 @@ export async function generateMetadata({
   const { slug } = await params;
   const article = getArticle(slug);
   if (!article) return { title: "Article" };
-  return { title: article.title, description: article.dek };
+  return {
+    title: article.title,
+    description: article.dek,
+    alternates: { canonical: `/articles/${article.slug}` },
+    openGraph: {
+      type: "article",
+      title: article.title,
+      description: article.dek,
+      publishedTime: new Date(article.date).toISOString(),
+      authors: [article.author],
+      images: [{ url: article.hero, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.dek,
+      images: [article.hero],
+    },
+  };
 }
 
 function renderBlock(block: Block, i: number) {
@@ -102,8 +120,24 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
   const related = ARTICLES.filter((a) => a.slug !== article.slug).slice(0, 3);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.dek,
+    image: [`https://joinethically.com${article.hero}`],
+    datePublished: new Date(article.date).toISOString(),
+    author: { "@type": "Person", name: article.author, jobTitle: article.authorTitle },
+    publisher: { "@type": "Organization", name: "JoinEthically" },
+    mainEntityOfPage: `https://joinethically.com/articles/${article.slug}`,
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="article-wrap">
         <p className="article-crumb">
           <Link href="/news">News &amp; Investigations</Link> · {article.tag}

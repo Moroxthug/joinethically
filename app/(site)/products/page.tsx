@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ProductsGrid from "./ProductsGrid";
 
-export const metadata: Metadata = { title: "Ethical Products" };
+export const metadata: Metadata = {
+  title: "Ethical Products",
+  description:
+    "Independently scored reviews of ethical products in fashion, home, beauty, tech, and food — ranked on people, planet, and honesty. No sponsored placements, no pay-to-rank.",
+};
 
 export default function ProductsPage() {
   return (

@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import GoodLivingList from "./GoodLivingList";
 
-export const metadata: Metadata = { title: "Good Living" };
+export const metadata: Metadata = {
+  title: "Good Living",
+  description:
+    "Practical guidance on living with your values intact — money, food, relationships, and the small daily choices, made practical instead of preachy.",
+};
 
 export default function GoodLivingPage() {
   return (

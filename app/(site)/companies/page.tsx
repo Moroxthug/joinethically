@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CompaniesGrid from "./CompaniesGrid";
 
-export const metadata: Metadata = { title: "Ethical Companies" };
+export const metadata: Metadata = {
+  title: "Ethical Companies",
+  description:
+    "Brand scorecards built from public disclosures, labor records, certifications, and supply-chain audits — never a brand's own press kit. Scores move when the evidence does.",
+};
 
 export default function CompaniesPage() {
   return (

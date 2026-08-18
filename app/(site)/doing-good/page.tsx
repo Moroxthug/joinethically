@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import DoingGoodGrid from "./DoingGoodGrid";
 
-export const metadata: Metadata = { title: "Doing Good" };
+export const metadata: Metadata = {
+  title: "Doing Good",
+  description:
+    "Vetted charities, volunteering opportunities, and giving guides, checked for financial transparency, spending ratio, and measurable outcomes before they appear here.",
+};
 
 export default function DoingGoodPage() {
   return (

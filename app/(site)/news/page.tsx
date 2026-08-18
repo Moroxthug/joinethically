@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import NewsList from "./NewsList";
 
-export const metadata: Metadata = { title: "News & Investigations" };
+export const metadata: Metadata = {
+  title: "News & Investigations",
+  description:
+    "Original reporting and investigations on ethics, sustainability, and corporate accountability, plus a curated daily digest of the stories that matter.",
+};
 
 const DIGEST = [
   { title: "EU supply-chain due-diligence law clears final vote", source: "Reuters" },

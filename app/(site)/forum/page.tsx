@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import ForumBoard from "./ForumBoard";
 
-export const metadata: Metadata = { title: "Forum" };
+export const metadata: Metadata = {
+  title: "Forum",
+  description:
+    "Ask the community and get sourced answers — every thread has an AI companion that footnotes claims and flags unverified statements with a link to sourcing.",
+};
 
 export default function ForumPage() {
   return (
