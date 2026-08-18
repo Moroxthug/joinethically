@@ -157,6 +157,25 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               </li>
             ))}
           </ol>
+
+          <div className="toc-support">
+            <p className="label">Support this</p>
+            <p>
+              Reporting like this takes months and costs us nothing to your inbox in ads. Readers
+              fund it directly.
+            </p>
+            <button className="btn" type="button" style={{ width: "100%" }}>
+              Join free
+            </button>
+          </div>
+
+          <div className="toc-support">
+            <p className="label">Sourcing</p>
+            <p>{article.read} · last fact-checked {article.date}.</p>
+            <Link className="section-link" href="/#how-we-rate">
+              How we rate →
+            </Link>
+          </div>
         </aside>
       </div>
 

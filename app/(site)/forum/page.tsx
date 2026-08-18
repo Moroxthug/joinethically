@@ -25,13 +25,34 @@ export default function ForumPage() {
           <span>Ask the community — sourced, not vibes</span>
         </div>
         <div className="page-head">
-          <p className="label">The Forum · 8,900 members</p>
-          <h1>Ask the community — sourced, not vibes</h1>
-          <p>
-            Every thread has an AI companion that footnotes claims, flags unverified statements
-            with a link to sourcing, and surfaces JoinEthically&apos;s own reporting when it&apos;s
-            relevant. It never asserts a bare opinion of its own.
-          </p>
+          <div className="page-head-text">
+            <p className="label">The Forum · 8,900 members</p>
+            <h1>Ask the community — sourced, not vibes</h1>
+            <p>
+              Every thread has an AI companion that footnotes claims, flags unverified statements
+              with a link to sourcing, and surfaces JoinEthically&apos;s own reporting when
+              it&apos;s relevant. It never asserts a bare opinion of its own.
+            </p>
+          </div>
+          <div className="page-head-spotlight">
+            <p className="label">Community pulse</p>
+            <div className="stat-row">
+              <span>Online now</span>
+              <strong className="num">212</strong>
+            </div>
+            <div className="stat-row">
+              <span>Threads today</span>
+              <strong className="num">18</strong>
+            </div>
+            <div className="stat-row">
+              <span>Avg. AI companion response</span>
+              <strong className="num">40 sec</strong>
+            </div>
+            <div className="stat-row">
+              <span>Busiest room</span>
+              <strong className="num">Good Living</strong>
+            </div>
+          </div>
         </div>
       </div>
 

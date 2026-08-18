@@ -32,12 +32,29 @@ export default function NewsPage() {
         </div>
       </Link>
       <div className="page-head">
-        <p className="label">News &amp; Investigations · updated daily</p>
-        <h1>Original reporting on ethics, sustainability, and accountability</h1>
-        <p>
-          The traffic engine of the site — investigations like this week&apos;s lead story, plus a
-          curated daily digest of the stories that matter.
-        </p>
+        <div className="page-head-text">
+          <p className="label">News &amp; Investigations · updated daily</p>
+          <h1>Original reporting on ethics, sustainability, and accountability</h1>
+          <p>
+            The traffic engine of the site — investigations like this week&apos;s lead story, plus
+            a curated daily digest of the stories that matter.
+          </p>
+        </div>
+        <div className="page-head-spotlight">
+          <p className="label">Newsroom pulse</p>
+          <div className="stat-row">
+            <span>Stories this week</span>
+            <strong className="num">6</strong>
+          </div>
+          <div className="stat-row">
+            <span>Open records requests</span>
+            <strong className="num">8</strong>
+          </div>
+          <div className="stat-row">
+            <span>Longest-running investigation</span>
+            <strong className="num">6 months</strong>
+          </div>
+        </div>
       </div>
 
       <div style={{ paddingBottom: 64 }}>

@@ -98,6 +98,18 @@ export default function HomePage() {
               </div>
               <span className="score-chip num">85 · Great</span>
             </div>
+            <div className="pick-item">
+              <span className="pick-rank num">04</span>
+              <img className="pick-thumb" src="/images/skincare-shelf.jpg" alt="" />
+              <div>
+                <h3>Solace Skin — refillable SPF 30</h3>
+                <p>Reef-safe formula, refill pods cut packaging waste by an estimated 70%.</p>
+              </div>
+              <span className="score-chip num">81 · Great</span>
+            </div>
+            <a className="section-link" href="/products" style={{ marginTop: 18, display: "inline-block" }}>
+              See the full shortlist →
+            </a>
           </div>
         </section>
       </div>
