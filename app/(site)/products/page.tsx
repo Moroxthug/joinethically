@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import ProductsGrid from "./ProductsGrid";
 
 export const metadata: Metadata = { title: "Ethical Products" };
@@ -20,6 +21,9 @@ export default function ProductsPage() {
           how it treats people, how it treats the planet, and how honest the brand is about both.
           No sponsored placements, no pay-to-rank.
         </p>
+        <Link href="/articles/best-ethical-clothing-brands-2026" className="section-link">
+          Start here: 9 ethical clothing brands worth your money in 2026 →
+        </Link>
       </div>
       <ProductsGrid />
     </div>

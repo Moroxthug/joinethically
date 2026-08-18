@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function HomePage() {
   return (
     <>
@@ -16,11 +18,11 @@ export default function HomePage() {
         <section className="hero" style={{ borderTop: "none", paddingTop: 56 }}>
           <div className="fade-up">
             <p className="eyebrow label">Investigation</p>
-            <div
+            <Link
+              href="/articles/fast-fashion-recycled-polyester"
               className="video-card"
               style={{ ["--photo-url" as string]: "url(/images/hero-mill.jpg)", marginBottom: 22, aspectRatio: "16 / 10" }}
-              role="button"
-              aria-label="Play: inside an independent wool mill, this spring"
+              aria-label="Read the investigation: inside an independent wool mill, this spring"
             >
               <span className="video-duration">3:12</span>
               <span className="video-play" aria-hidden="true">▶</span>
@@ -28,15 +30,20 @@ export default function HomePage() {
                 <div className="vc-title">Inside an independent wool mill, this spring</div>
                 <div className="vc-meta">Watch the mini-documentary</div>
               </div>
-            </div>
+            </Link>
             <h1>
-              Inside the fast-fashion supply chain: what &quot;recycled polyester&quot; actually
-              means
+              <Link href="/articles/fast-fashion-recycled-polyester" className="title-link">
+                Inside the fast-fashion supply chain: what &quot;recycled polyester&quot; actually
+                means
+              </Link>
             </h1>
             <p className="hero-dek">
               We traced three major labels&apos; recycled-fabric claims back to their mills. The
               certifications check out — the math behind them doesn&apos;t. A six-month
-              investigation.
+              investigation.{" "}
+              <Link href="/articles/fast-fashion-recycled-polyester" className="section-link">
+                Read the full investigation →
+              </Link>
             </p>
             <blockquote className="pullquote">
               The labels are accurate. The volume math behind them isn&apos;t — and until now, no
@@ -461,15 +468,15 @@ export default function HomePage() {
             </a>
           </div>
           <div className="archive-grid">
-            <div className="archive-row">
+            <Link href="/articles/is-vegan-leather-sustainable" className="archive-row">
               <span className="archive-cat" style={{ color: "var(--accent-ink)" }}>
                 Products
               </span>
               <span className="archive-title">
-                Why &quot;vegan leather&quot; is mostly plastic — a materials primer
+                Is &quot;vegan leather&quot; actually sustainable? A materials primer
               </span>
               <span className="archive-meta num">Jul 29</span>
-            </div>
+            </Link>
             <div className="archive-row">
               <span className="archive-cat" style={{ color: "var(--gold-ink)" }}>
                 Doing Good

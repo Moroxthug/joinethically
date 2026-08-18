@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import NewsList from "./NewsList";
 
 export const metadata: Metadata = { title: "News & Investigations" };
@@ -13,15 +14,15 @@ const DIGEST = [
 export default function NewsPage() {
   return (
     <div className="wrap">
-      <div
+      <Link
+        href="/articles/fast-fashion-recycled-polyester"
         className="video-card"
         style={{
           ["--photo-url" as string]: "url(/images/hero-mill.jpg)",
           margin: "32px 0 8px",
           aspectRatio: "21 / 6",
         }}
-        role="button"
-        aria-label="Play: inside the fast-fashion supply chain"
+        aria-label="Read: inside the fast-fashion supply chain"
       >
         <span className="video-duration">3:12</span>
         <span className="video-play" aria-hidden="true">▶</span>
@@ -29,7 +30,7 @@ export default function NewsPage() {
           <div className="vc-title">This week&apos;s lead investigation, on video</div>
           <div className="vc-meta">Watch the mini-documentary</div>
         </div>
-      </div>
+      </Link>
       <div className="page-head">
         <p className="label">News &amp; Investigations · updated daily</p>
         <h1>Original reporting on ethics, sustainability, and accountability</h1>
