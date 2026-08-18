@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import CompaniesGrid from "./CompaniesGrid";
 
 export const metadata: Metadata = { title: "Ethical Companies" };
@@ -21,6 +22,9 @@ export default function CompaniesPage() {
             brand&apos;s own press kit. Scores move when the evidence does, and every point links
             back to its source.
           </p>
+          <Link href="/articles/apparel-factory-list-request" className="section-link">
+            Investigation: we asked 12 apparel brands for their factory list →
+          </Link>
         </div>
         <div className="page-head-spotlight">
           <p className="label">Score movement this week</p>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import DoingGoodGrid from "./DoingGoodGrid";
 
 export const metadata: Metadata = { title: "Doing Good" };
@@ -21,6 +22,9 @@ export default function DoingGoodPage() {
             financial transparency, spending ratio, and measurable outcomes before it appears
             here.
           </p>
+          <Link href="/articles/vet-a-charity-in-fifteen-minutes" className="section-link">
+            Start here: how to vet a charity in fifteen minutes →
+          </Link>
         </div>
         <div className="page-head-spotlight">
           <p className="label">Vetting, by the numbers</p>

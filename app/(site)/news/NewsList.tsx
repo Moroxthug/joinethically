@@ -26,7 +26,15 @@ const ARTICLES = [
     dek: "A plain records request, sent the same way to every brand. The pattern in who answered is the story.",
     date: "Jul 22",
     read: "8 min read",
-    slug: null,
+    slug: "apparel-factory-list-request",
+  },
+  {
+    tag: "Doing Good",
+    title: "How to vet a charity in fifteen minutes",
+    dek: "You don't need a finance degree to check whether a donation actually does what the ad says.",
+    date: "Jul 11",
+    read: "6 min read",
+    slug: "vet-a-charity-in-fifteen-minutes",
   },
   {
     tag: "News",
@@ -35,6 +43,14 @@ const ARTICLES = [
     date: "Jul 6",
     read: "6 min read",
     slug: null,
+  },
+  {
+    tag: "Good Living",
+    title: "How to budget for ethical groceries without doubling your bill",
+    dek: "A reader-tested framework for spending more where it matters and less everywhere else.",
+    date: "Jul 2",
+    read: "7 min read",
+    slug: "budget-ethical-groceries",
   },
   {
     tag: "Products",
@@ -62,7 +78,7 @@ const ARTICLES = [
   },
 ];
 
-const TAGS = ["Investigation", "Companies", "News", "Products", "Good Living"];
+const TAGS = ["Investigation", "Companies", "News", "Products", "Good Living", "Doing Good"];
 
 export default function NewsList() {
   const [active, setActive] = useState("All");

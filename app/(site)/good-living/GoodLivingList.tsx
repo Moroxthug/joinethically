@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 const TOPICS: {
   name: string;
-  items: { title: string; dek: string; read: string }[];
+  items: { title: string; dek: string; read: string; slug?: string }[];
 }[] = [
   {
     name: "Money",
@@ -13,6 +14,7 @@ const TOPICS: {
         title: "How to budget for ethical groceries without doubling your bill",
         dek: "A reader-tested framework for spending more where it matters and less everywhere else.",
         read: "7 min read",
+        slug: "budget-ethical-groceries",
       },
       {
         title: "Is it hypocritical to invest in an index fund?",
@@ -86,20 +88,31 @@ export default function GoodLivingList() {
         <div className="group-block" key={group.name}>
           <p className="group-label">{group.name}</p>
           <div className="article-list">
-            {group.items.map((g) => (
-              <div className="article-row" key={g.title}>
-                <div>
-                  <h3>{g.title}</h3>
-                  <p>{g.dek}</p>
+            {group.items.map((g) => {
+              const content = (
+                <>
+                  <div>
+                    <h3>{g.title}</h3>
+                    <p>{g.dek}</p>
+                  </div>
+                  <div className="article-meta">
+                    <span className="article-tag" style={{ color: "var(--gold-ink)" }}>
+                      {group.name}
+                    </span>
+                    <span>{g.read}</span>
+                  </div>
+                </>
+              );
+              return g.slug ? (
+                <Link href={`/articles/${g.slug}`} className="article-row" key={g.title}>
+                  {content}
+                </Link>
+              ) : (
+                <div className="article-row" key={g.title}>
+                  {content}
                 </div>
-                <div className="article-meta">
-                  <span className="article-tag" style={{ color: "var(--gold-ink)" }}>
-                    {group.name}
-                  </span>
-                  <span>{g.read}</span>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       ))}

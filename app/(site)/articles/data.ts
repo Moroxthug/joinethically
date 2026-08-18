@@ -371,6 +371,221 @@ export const ARTICLES: Article[] = [
       },
     ],
   },
+  {
+    slug: "apparel-factory-list-request",
+    tag: "Companies",
+    title: "We asked 12 apparel brands for their factory list. Four answered.",
+    dek: "A plain records request, sent the same way to every brand. The pattern in who answered — and how — is the story.",
+    author: "Daniel Aoki",
+    authorTitle: "Companies Editor",
+    authorBio:
+      "Daniel is a former textile auditor who joined JoinEthically to build the Companies scorecard database. He worked factory-floor compliance for six years before switching to journalism.",
+    authorInitials: "DA",
+    date: "July 22, 2026",
+    read: "8 min read",
+    hero: "/images/hero-mill.jpg",
+    heroPosition: "50% 30%",
+    heroCaption: "A production floor at one of the four mills that responded to our request.",
+    toc: [
+      { id: "the-request", label: "The request we sent" },
+      { id: "who-answered", label: "Who answered, and how" },
+      { id: "who-didnt", label: "Who didn't, and what they said instead" },
+      { id: "what-it-means", label: "What a factory list actually proves" },
+    ],
+    body: [
+      {
+        type: "p",
+        text: "In May, we sent the same email to the sustainability contact at twelve mid-size and large apparel brands: a request for their current factory list — names, locations, and the certification or audit body covering each site. No follow-up questions, no gotcha framing. Just the list, the kind of document a genuinely transparent supply chain should be able to produce in an afternoon.",
+      },
+      {
+        type: "p",
+        text: "Four brands sent one. Three sent a partial list — first-tier assembly factories only, with fabric mills and dye houses excluded. Four sent a link to their public sustainability page, which did not contain a factory list. One did not respond at all after two follow-ups.",
+      },
+      { type: "h2", id: "the-request", text: "The request we sent" },
+      {
+        type: "p",
+        text: "We kept the ask deliberately narrow so no brand could reasonably claim it was burdensome: current factory name, city and country, and which third-party body last audited it. That's a subset of what the Fair Labor Association and the Fashion Revolution Transparency Index both consider baseline disclosure — nothing we asked for was a novel standard.",
+      },
+      { type: "h2", id: "who-answered", text: "Who answered, and how" },
+      {
+        type: "p",
+        text: "Kadu Wool Co. replied within four days with a single-farm supply chain document that named the farm, the scouring facility, and the mill — three sites total, each independently auditable. Fenwick Outerwear took three weeks but eventually produced a full list covering both cut-and-sew and dye facilities. Two other brands sent tier-1 lists only, which is common practice but leaves the highest-risk stage of production — dyeing and finishing — unaccounted for.",
+      },
+      {
+        type: "score",
+        name: "Kadu Wool Co.",
+        category: "Apparel · Base layers",
+        score: 92,
+        verdict: "Exceptional",
+        people: 95,
+        planet: 88,
+        transparency: 93,
+        sourced: "Sourced from 14 disclosures · last verified 3 days ago",
+      },
+      { id: "who-didnt", type: "h2", text: "Who didn't, and what they said instead" },
+      {
+        type: "p",
+        text: "The four brands that redirected us to a sustainability page each used a version of the same line: “we're committed to full supply chain transparency by 2027.” None of the four pages named a single factory. A commitment to future transparency is not evidence of current transparency, and treating the two as interchangeable in marketing copy is exactly the kind of gap our scorecard is built to catch.",
+      },
+      {
+        type: "quote",
+        text: "A commitment to future transparency is not evidence of current transparency.",
+      },
+      { id: "what-it-means", type: "h2", text: "What a factory list actually proves" },
+      {
+        type: "p",
+        text: "A factory list alone doesn't prove good labor conditions — it proves a brand knows, and is willing to say, where its clothes are made. That's a floor, not a ceiling. But it's a floor most of the industry still won't clear on request, which is why we treat willingness to disclose as a heavily weighted factor in the Transparency third of every company's score.",
+      },
+      {
+        type: "list",
+        items: [
+          "Full factory list, all tiers, within 2 weeks: Kadu Wool Co., Fenwick Outerwear.",
+          "Partial (tier-1 only) list: two brands, not yet named pending their right-of-reply window.",
+          "Redirect to a sustainability page with no factory names: four brands.",
+          "No response after two follow-ups: one brand.",
+        ],
+      },
+      {
+        type: "p",
+        text: "We're keeping this request open. Any brand that sends a full list will have its Transparency score revisited within a week of receipt — this is not a one-time snapshot, and neither is any score on this site.",
+      },
+    ],
+  },
+  {
+    slug: "vet-a-charity-in-fifteen-minutes",
+    tag: "Doing Good",
+    title: "How to vet a charity in fifteen minutes",
+    dek: "You don't need a finance degree to check whether a donation actually does what the ad says. A practical, fifteen-minute checklist.",
+    author: "Rosa Tovar",
+    authorTitle: "Doing Good contributor",
+    authorBio:
+      "Rosa writes about household finance and giving for JoinEthically's Doing Good desk, and previously worked in nonprofit program evaluation.",
+    authorInitials: "RT",
+    date: "July 11, 2026",
+    read: "6 min read",
+    hero: "/images/hands-donation-boxes.jpg",
+    heroCaption: "Vetting a cause takes less time than most people assume.",
+    toc: [
+      { id: "spending-ratio", label: "Check the spending ratio" },
+      { id: "read-the-990", label: "Read one page of the 990" },
+      { id: "outcomes-not-anecdotes", label: "Look for outcomes, not anecdotes" },
+      { id: "the-checklist", label: "The 15-minute checklist" },
+    ],
+    body: [
+      {
+        type: "p",
+        text: "Most people give to charity based on a story — a photo, an ad, a friend's fundraiser — and never check whether the organization behind it is actually effective. That's understandable; charity financial disclosures are dry and not built for a casual reader. But the check that matters most takes about fifteen minutes, and you don't need any special training to do it.",
+      },
+      { type: "h2", id: "spending-ratio", text: "Check the spending ratio" },
+      {
+        type: "p",
+        text: "The single most useful number is the percentage of a charity's budget that goes to actual programs versus overhead and fundraising. Reputable organizations typically run 75% or higher. Sites like Charity Navigator and CharityWatch calculate this for you from public tax filings — search the charity's name, and look at the finance tab before anything else.",
+      },
+      {
+        type: "list",
+        items: [
+          "80%+ to programs: strong. Most well-run mid-size and large nonprofits land here.",
+          "65–80%: acceptable, but check why — some legitimate causes have higher direct-service costs.",
+          "Below 65%, with no clear explanation: treat as a yellow flag and look closer.",
+        ],
+      },
+      { id: "read-the-990", type: "h2", text: "Read one page of the 990" },
+      {
+        type: "p",
+        text: "Every U.S. nonprofit above a small revenue threshold files a Form 990 — a public tax document — annually. You don't need to read all of it. Go straight to the compensation section: if the top executive's pay looks wildly out of proportion to the organization's budget, that's worth a second look. ProPublica's Nonprofit Explorer hosts these for free, searchable by name.",
+      },
+      {
+        type: "quote",
+        text: "You're not auditing the charity. You're checking that nothing here would embarrass them if you asked about it directly.",
+      },
+      { id: "outcomes-not-anecdotes", type: "h2", text: "Look for outcomes, not anecdotes" },
+      {
+        type: "p",
+        text: "A charity's website should say, in specific numbers, what it accomplished last year — meals delivered, acres protected, students tutored, whatever its actual mission is. If the site is all photos and testimonials with no measurable outcomes anywhere, that's not disqualifying on its own, but it means you're trusting a story instead of checking a result.",
+      },
+      { id: "the-checklist", type: "h2", text: "The 15-minute checklist" },
+      {
+        type: "list",
+        items: [
+          "Search the name on Charity Navigator or CharityWatch — check the spending ratio (2 min).",
+          "Pull the Form 990 on ProPublica's Nonprofit Explorer — scan executive compensation (5 min).",
+          "Check the charity's own site for a specific, numbers-based outcomes report (5 min).",
+          "Search “[charity name] complaints” or “[charity name] investigation” to rule out active controversies (3 min).",
+        ],
+      },
+      {
+        type: "p",
+        text: "Every cause listed in our Doing Good directory has already cleared this bar and then some — but the same fifteen minutes works for any charity you hear about outside our list, and it's worth doing before every gift over pocket-change size.",
+      },
+    ],
+  },
+  {
+    slug: "budget-ethical-groceries",
+    tag: "Good Living",
+    title: "How to budget for ethical groceries without doubling your bill",
+    dek: "A reader-tested framework for spending more where it actually matters and less everywhere else — not just buying more expensive versions of everything.",
+    author: "Dana Woods",
+    authorTitle: "Good Living contributor",
+    authorBio:
+      "Dana writes the Good Living column's household-budget series and has been tracking her own grocery spending publicly for two years.",
+    authorInitials: "DW",
+    date: "June 30, 2026",
+    read: "7 min read",
+    hero: "/images/pick-coffee.jpg",
+    heroPosition: "center 40%",
+    heroCaption: "Not every category is worth the upgrade — knowing which ones are is the whole framework.",
+    toc: [
+      { id: "the-mistake", label: "The mistake: upgrading everything" },
+      { id: "where-it-matters", label: "Where the upgrade actually matters" },
+      { id: "where-it-doesnt", label: "Where it mostly doesn't" },
+      { id: "the-framework", label: "The framework, in practice" },
+    ],
+    body: [
+      {
+        type: "p",
+        text: "The most common way people blow up their grocery budget trying to shop more ethically is treating it as an across-the-board upgrade: swap every item for the organic, fair-trade, or sustainably-certified version, and watch the bill jump 30–40%. Most people can't sustain that, get discouraged, and quit. The reader-tested alternative is to be selective — spend more on the categories where it actually changes an outcome, and stop worrying about the rest.",
+      },
+      { type: "h2", id: "the-mistake", text: "The mistake: upgrading everything" },
+      {
+        type: "p",
+        text: "Ethical certifications exist on a spectrum of how much they change the underlying product. A fair-trade label on coffee or chocolate reflects a real, auditable difference in what farmers are paid. An “eco” label on a shelf-stable pantry staple with a thin supply chain sometimes reflects very little. Treating every label the same way means paying a premium in places where it buys almost nothing.",
+      },
+      { id: "where-it-matters", type: "h2", text: "Where the upgrade actually matters" },
+      {
+        type: "list",
+        items: [
+          "Coffee and chocolate — direct-trade and fair-trade certifications here are well-audited and reflect real farmer pay differences.",
+          "Eggs and dairy — cage-free and pasture-raised claims correspond to meaningfully different animal welfare standards, though “free-range” alone is weaker than it sounds.",
+          "Seafood — wild-caught vs. farmed and MSC certification track real, large differences in sustainability.",
+        ],
+      },
+      {
+        type: "score",
+        name: "Ledger Coffee Roasters",
+        category: "Food · Coffee",
+        score: 88,
+        verdict: "Exceptional",
+        people: 91,
+        planet: 82,
+        transparency: 90,
+        sourced: "Sourced from 10 disclosures · last verified 2 days ago",
+      },
+      { id: "where-it-doesnt", type: "h2", text: "Where it mostly doesn't" },
+      {
+        type: "p",
+        text: "Bottled water, most shelf-stable packaged snacks, and produce with a short, simple supply chain are places where an “organic” or “eco” label often adds cost without a proportional difference in outcome — organic produce grown in your own region, for instance, usually beats an imported “ethical” version on total footprint regardless of the sticker.",
+      },
+      {
+        type: "quote",
+        text: "The premium is worth paying where the label reflects a real audited difference — not everywhere a label appears.",
+      },
+      { id: "the-framework", type: "h2", text: "The framework, in practice" },
+      {
+        type: "p",
+        text: "Pick three to five categories where you buy the most and where certifications are well-audited — for most households, that's coffee, chocolate, eggs, and one or two more. Upgrade those without hesitation. Buy everything else on price and convenience, and don't feel guilty about it. This single change is what got our test households' grocery premium down from 30%+ to roughly 8%, while covering the categories that make the largest real-world difference.",
+      },
+    ],
+  },
 ];
 
 export function getArticle(slug: string) {
