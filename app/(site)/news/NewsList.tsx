@@ -69,7 +69,7 @@ export default function NewsList() {
   const items = active === "All" ? ARTICLES : ARTICLES.filter((a) => a.tag === active);
 
   return (
-    <>
+    <div>
       <div className="filter-chips">
         {["All", ...TAGS].map((name) => (
           <button
@@ -115,6 +115,6 @@ export default function NewsList() {
           </p>
         )}
       </div>
-    </>
+    </div>
   );
 }
