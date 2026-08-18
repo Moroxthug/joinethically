@@ -121,12 +121,9 @@ export default function HomePage() {
               <p className="label section-mark">Explore</p>
               <h2>Six ways to go deeper</h2>
             </div>
-            <a className="section-link" href="#">
-              View full directory →
-            </a>
           </div>
           <div className="pillars">
-            <div className="pillar pillar-feature">
+            <Link href="/products" className="pillar pillar-feature">
               <div className="pillar-feature-content">
                 <div className="mark">◆</div>
                 <span className="feature-tag">Flagship pillar</span>
@@ -140,8 +137,9 @@ export default function HomePage() {
                 </span>
                 <span className="count num">1,204 products rated</span>
               </div>
-            </div>
-            <div
+            </Link>
+            <Link
+              href="/companies"
               className="pillar pillar-b pillar-photo tint-accent"
               style={{ ["--photo-url" as string]: "url(/images/pick-refill.jpg)" }}
             >
@@ -154,8 +152,9 @@ export default function HomePage() {
                 </p>
                 <span className="count num">340 companies tracked</span>
               </div>
-            </div>
-            <div
+            </Link>
+            <Link
+              href="/good-living"
               className="pillar pillar-c pillar-photo tint-gold"
               style={{ ["--photo-url" as string]: "url(/images/hero-mill.jpg)", backgroundPosition: "68% center" }}
             >
@@ -168,8 +167,9 @@ export default function HomePage() {
                 </p>
                 <span className="count num">210 guides</span>
               </div>
-            </div>
-            <div
+            </Link>
+            <Link
+              href="/doing-good"
               className="pillar pillar-d pillar-photo tint-accent"
               style={{ ["--photo-url" as string]: "url(/images/hands-donation-boxes.jpg)" }}
             >
@@ -182,8 +182,9 @@ export default function HomePage() {
                 </p>
                 <span className="count num">96 causes vetted</span>
               </div>
-            </div>
-            <div
+            </Link>
+            <Link
+              href="/news"
               className="pillar pillar-e pillar-photo tint-ink"
               style={{ ["--photo-url" as string]: "url(/images/newsroom-desk.jpg)" }}
             >
@@ -196,8 +197,9 @@ export default function HomePage() {
                 </p>
                 <span className="count num">Updated daily</span>
               </div>
-            </div>
-            <div
+            </Link>
+            <Link
+              href="/forum"
               className="pillar pillar-f pillar-photo tint-gold"
               style={{ ["--photo-url" as string]: "url(/images/pick-refill.jpg)", backgroundPosition: "80% center" }}
             >
@@ -210,7 +212,7 @@ export default function HomePage() {
                 </p>
                 <span className="count num">8,900 members</span>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -234,9 +236,9 @@ export default function HomePage() {
               — we re-check every score by hand, not just on intake
             </p>
             <br />
-            <a className="section-link" href="#">
+            <Link className="section-link" href="/methodology#scoring">
               Read the full methodology →
-            </a>
+            </Link>
           </div>
           <div className="scorecard">
             <div className="sc-head">
@@ -285,9 +287,6 @@ export default function HomePage() {
               <p className="label section-mark">Watch</p>
               <h2>This week&apos;s reporting, on video</h2>
             </div>
-            <a className="section-link" href="#">
-              All videos →
-            </a>
           </div>
           <div className="guest-strip">
             <div
@@ -340,7 +339,7 @@ export default function HomePage() {
               <p className="label section-mark">From our community</p>
               <h2>Guest posts this week</h2>
             </div>
-            <a className="section-link" href="#">
+            <a className="section-link" href="mailto:pitch@joinethically.com">
               Pitch us a story →
             </a>
           </div>
@@ -480,9 +479,9 @@ export default function HomePage() {
               <p className="label section-mark">The archive</p>
               <h2>Older, but not less true</h2>
             </div>
-            <a className="section-link" href="#">
+            <Link className="section-link" href="/news">
               View the full archive →
-            </a>
+            </Link>
           </div>
           <div className="archive-grid">
             <Link href="/articles/is-vegan-leather-sustainable" className="archive-row">
@@ -494,14 +493,14 @@ export default function HomePage() {
               </span>
               <span className="archive-meta num">Jul 29</span>
             </Link>
-            <div className="archive-row">
+            <Link href="/articles/vet-a-charity-in-fifteen-minutes" className="archive-row">
               <span className="archive-cat" style={{ color: "var(--gold-ink)" }}>
                 Doing Good
               </span>
               <span className="archive-title">How to vet a charity in fifteen minutes</span>
               <span className="archive-meta num">Jul 11</span>
-            </div>
-            <div className="archive-row">
+            </Link>
+            <Link href="/articles/apparel-factory-list-request" className="archive-row">
               <span className="archive-cat" style={{ color: "var(--accent-ink)" }}>
                 Companies
               </span>
@@ -509,7 +508,7 @@ export default function HomePage() {
                 We asked 12 apparel brands for their factory list. Four answered.
               </span>
               <span className="archive-meta num">Jul 22</span>
-            </div>
+            </Link>
             <div className="archive-row">
               <span className="archive-cat" style={{ color: "var(--accent-ink)" }}>
                 News

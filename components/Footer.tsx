@@ -38,15 +38,14 @@ export default function Footer() {
           </div>
           <div className="foot-col">
             <h4>About</h4>
-            <a href="/#how-we-rate">Our methodology</a>
-            <a href="#">Editorial standards</a>
-            <a href="#">Team</a>
+            <a href="/methodology">Our methodology</a>
+            <a href="/methodology#independence">Editorial standards</a>
+            <span className="foot-soon">Team (soon)</span>
           </div>
           <div className="foot-col">
             <h4>Support</h4>
-            <a href="#">Contact</a>
-            <a href="#">Pitch a story</a>
-            <a href="#">Advertise</a>
+            <a href="mailto:hello@joinethically.com">Contact</a>
+            <a href="mailto:pitch@joinethically.com">Pitch a story</a>
           </div>
         </div>
         <div className="fine-print">

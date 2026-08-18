@@ -69,7 +69,7 @@ export default function NewsPage() {
             <p className="label">Today&apos;s digest</p>
             {DIGEST.map((d) => (
               <div className="digest-item" key={d.title}>
-                <a href="#">{d.title}</a>
+                <span>{d.title}</span>
                 <span className="digest-source">{d.source}</span>
               </div>
             ))}

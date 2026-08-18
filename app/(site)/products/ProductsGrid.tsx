@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 type Product = {
   name: string;
@@ -188,9 +189,9 @@ export default function ProductsGrid() {
         Sorting by score, full-text search, and pagination across all 1,204 rated products is the
         next build milestone. Affiliate links (where present) never affect score, ranking, or
         which items get reviewed — see our{" "}
-        <a className="section-link" href="#">
+        <Link className="section-link" href="/methodology#affiliate-policy">
           affiliate policy
-        </a>
+        </Link>
         .
       </div>
     </div>

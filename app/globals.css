@@ -1097,6 +1097,11 @@ footer {
 .foot-col a:hover {
   color: var(--ink);
 }
+.foot-soon {
+  display: block;
+  color: var(--ink-faint);
+  padding: 5px 0;
+}
 .fine-print {
   margin-top: 44px;
   padding-top: 20px;
@@ -1452,6 +1457,10 @@ footer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+}
+a.pillar {
+  text-decoration: none;
+  color: inherit;
 }
 a.mini-card {
   text-decoration: none;
