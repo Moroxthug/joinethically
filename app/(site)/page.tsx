@@ -1,29 +1,31 @@
+import Link from "next/link";
+import { articles } from "@/lib/articles";
+
 export default function HomePage() {
+  const [leadArticle, secondArticle, thirdArticle] = articles;
+
   return (
     <>
       <div className="wrap">
         <section className="hero" style={{ borderTop: "none", paddingTop: 56 }}>
           <div>
-            <p className="eyebrow label">Investigation</p>
-            <div className="hero-art">
-              <span>Inside an independent wool mill, this spring</span>
-            </div>
+            <p className="eyebrow label">Explainer</p>
+            <Link href={`/news/${leadArticle.slug}`} className="hero-art">
+              <span>Textile recycling, explained</span>
+            </Link>
             <h1>
-              Inside the fast-fashion supply chain: what &quot;recycled polyester&quot; actually
-              means
+              <Link href={`/news/${leadArticle.slug}`}>{leadArticle.title}</Link>
             </h1>
-            <p className="hero-dek">
-              We traced three major labels&apos; recycled-fabric claims back to their mills. The
-              certifications check out — the math behind them doesn&apos;t. A six-month
-              investigation.
-            </p>
+            <p className="hero-dek">{leadArticle.dek}</p>
             <blockquote className="pullquote">
-              The labels are accurate. The volume math behind them isn&apos;t — and until now, no
-              one outside the mills was checking.
+              Under 1% of the material used to make new clothing comes from recycled clothing —
+              most &quot;recycled polyester&quot; comes from recycled plastic bottles instead.
             </blockquote>
             <div className="byline">
-              <span className="avatar">MK</span>
-              <span>Mira Kessler · Investigations Editor · 11 min read</span>
+              <span className="avatar">JE</span>
+              <span>
+                JoinEthically Editorial Team · {leadArticle.publishedDate} · {leadArticle.readTime}
+              </span>
             </div>
           </div>
 
@@ -209,49 +211,44 @@ export default function HomePage() {
         <div className="wrap">
           <div className="section-head">
             <div>
-              <p className="label section-mark">From our community</p>
-              <h2>Guest posts this week</h2>
+              <p className="label section-mark">From News &amp; Investigations</p>
+              <h2>More explainers, sourced from the standards themselves</h2>
             </div>
-            <a className="section-link" href="#">
-              Pitch us a story →
+            <a className="section-link" href="/news">
+              View all reporting →
             </a>
           </div>
           <div className="guest-strip">
-            <div className="guest-card">
-              <div className="guest-photo coffee" />
-              <span className="guest-tag">Guest essay</span>
-              <h3>
-                I ran my family&apos;s grocery budget through an ethics filter for a month.
-                Here&apos;s the real cost.
-              </h3>
-              <div className="guest-by">
-                <span className="avatar" style={{ background: "var(--gold-soft)", color: "var(--gold-ink)" }}>
-                  RT
-                </span>
-                <span>Rosa Tovar, reader contributor</span>
-              </div>
-            </div>
-            <div className="guest-card">
-              <div className="guest-photo mill" />
-              <span className="guest-tag">Guest essay</span>
-              <h3>What working inside a &quot;sustainable&quot; factory actually taught me</h3>
-              <div className="guest-by">
-                <span className="avatar" style={{ background: "var(--gold-soft)", color: "var(--gold-ink)" }}>
-                  DA
-                </span>
-                <span>Daniel Aoki, former textile auditor</span>
-              </div>
-            </div>
-            <div className="guest-card">
+            <Link href={`/news/${secondArticle.slug}`} className="guest-card">
               <div className="guest-photo refill" />
-              <span className="guest-tag">Guest essay</span>
-              <h3>Small business, big conscience: pricing fairly when your costs are 20% higher</h3>
+              <span className="guest-tag">{secondArticle.category}</span>
+              <h3>{secondArticle.title}</h3>
               <div className="guest-by">
-                <span className="avatar" style={{ background: "var(--gold-soft)", color: "var(--gold-ink)" }}>
-                  PL
+                <span>
+                  JoinEthically Editorial Team · {secondArticle.readTime}
                 </span>
-                <span>Priya Lall, founder, Anew Refill</span>
               </div>
+            </Link>
+            <Link href={`/news/${thirdArticle.slug}`} className="guest-card">
+              <div className="guest-photo coffee" />
+              <span className="guest-tag">{thirdArticle.category}</span>
+              <h3>{thirdArticle.title}</h3>
+              <div className="guest-by">
+                <span>
+                  JoinEthically Editorial Team · {thirdArticle.readTime}
+                </span>
+              </div>
+            </Link>
+            <div className="guest-card guest-card-cta">
+              <span className="guest-tag">Guest posts</span>
+              <h3>Practitioner, whistleblower, or small ethical-business owner? Pitch us a story.</h3>
+              <p>
+                Guest posts are labeled contributor essays, reviewed before publishing, and always
+                credited to a real, named contributor — never invented.
+              </p>
+              <a className="section-link" href="#">
+                Pitch a guest post →
+              </a>
             </div>
           </div>
         </div>
@@ -348,57 +345,30 @@ export default function HomePage() {
               <p className="label section-mark">The archive</p>
               <h2>Older, but not less true</h2>
             </div>
-            <a className="section-link" href="#">
+            <a className="section-link" href="/news">
               View the full archive →
             </a>
           </div>
           <div className="archive-grid">
-            <div className="archive-row">
-              <span className="archive-cat" style={{ color: "var(--accent-ink)" }}>
-                Products
-              </span>
-              <span className="archive-title">
-                Why &quot;vegan leather&quot; is mostly plastic — a materials primer
-              </span>
-              <span className="archive-meta num">Jul 29</span>
-            </div>
-            <div className="archive-row">
-              <span className="archive-cat" style={{ color: "var(--gold-ink)" }}>
-                Doing Good
-              </span>
-              <span className="archive-title">How to vet a charity in fifteen minutes</span>
-              <span className="archive-meta num">Jul 11</span>
-            </div>
-            <div className="archive-row">
-              <span className="archive-cat" style={{ color: "var(--accent-ink)" }}>
-                Companies
-              </span>
-              <span className="archive-title">
-                We asked 12 apparel brands for their factory list. Four answered.
-              </span>
-              <span className="archive-meta num">Jul 22</span>
-            </div>
-            <div className="archive-row">
-              <span className="archive-cat" style={{ color: "var(--accent-ink)" }}>
-                News
-              </span>
-              <span className="archive-title">B Corp recertification is getting harder. Good.</span>
-              <span className="archive-meta num">Jul 6</span>
-            </div>
-            <div className="archive-row">
-              <span className="archive-cat" style={{ color: "var(--gold-ink)" }}>
-                Good Living
-              </span>
-              <span className="archive-title">The ethics of re-gifting, actually</span>
-              <span className="archive-meta num">Jul 18</span>
-            </div>
-            <div className="archive-row">
-              <span className="archive-cat" style={{ color: "var(--gold-ink)" }}>
-                Good Living
-              </span>
-              <span className="archive-title">Reader mailbag: is secondhand always better?</span>
-              <span className="archive-meta num">Jun 30</span>
-            </div>
+            {articles.map((article) => (
+              <Link
+                key={article.slug}
+                href={`/news/${article.slug}`}
+                className="archive-row"
+              >
+                <span
+                  className="archive-cat"
+                  style={{
+                    color:
+                      article.category === "Good Living" ? "var(--gold-ink)" : "var(--accent-ink)",
+                  }}
+                >
+                  {article.category}
+                </span>
+                <span className="archive-title">{article.title}</span>
+                <span className="archive-meta num">{article.publishedDate}</span>
+              </Link>
+            ))}
           </div>
 
           <div className="directory-row">
