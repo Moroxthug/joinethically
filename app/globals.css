@@ -637,19 +637,12 @@ section.tight {
   gap: 12px;
 }
 .guest-photo {
+  display: block;
   aspect-ratio: 4 / 3;
   border-radius: 4px;
+  background-color: var(--accent-soft);
   background-size: cover;
   background-position: center;
-}
-.guest-photo.coffee {
-  background-image: url("/images/pick-coffee.jpg");
-}
-.guest-photo.mill {
-  background-image: url("/images/hero-mill.jpg");
-}
-.guest-photo.refill {
-  background-image: url("/images/pick-refill.jpg");
 }
 .guest-tag {
   font-family: var(--font-sans);

@@ -1,6 +1,10 @@
 # JoinEthically — Brand & Site Plan
 
-Status: early direction, for discussion. Not yet implemented.
+Status: direction agreed and substantially implemented. The editorial site, the blog ("The
+Journal"), and the monetisation framework are built — see [`launch.md`](launch.md) for what
+remains before the domain points at it, and [`monetisation.md`](monetisation.md) for how
+section 10 below was implemented. The ratings database, CMS, member store, and forum backend
+are still to come.
 
 ## 1. Premise
 
@@ -62,6 +66,33 @@ score is legible at a glance, matching Good On You's "We Avoid → Great" patter
 sourcing exposed, which none of the comparables do well.
 
 ## 5. Design direction
+
+### 5.0 The Journal — editorial layout (implemented)
+
+The blog was redesigned against how the major newsrooms and the ethical-publishing
+comparables actually structure reading, rather than as a list of posts:
+
+- **Index** — a single lead slot that gets real estate (photo, dek, two key findings pulled
+  from the piece, byline) rather than a uniform grid; two secondary stories beneath it; then a
+  river of full cards with a sticky rail carrying most-read, the section list, and the
+  newsletter. This is the front-page hierarchy every serious outlet converges on, because it
+  answers "what is the one thing to read" before "what else is there".
+- **Article** — reading-progress bar, a "What to know" takeaways box above the fold (standard
+  on NYT/Guardian/Reuters longform), a numbered contents rail, drop cap on the lede, pull
+  quotes with attribution, inline callouts, and a share rail with no third-party widgets.
+- **The trust furniture is the differentiator.** Every piece can carry an open "How we sourced
+  this" block and a permanent corrections log, both rendered expanded rather than hidden
+  behind a disclosure triangle — on a site whose product is trustworthiness, the working
+  should be visible. None of the comparables do this well; Ethical Consumer buries its
+  sourcing and The Good Trade mostly doesn't publish any.
+- **Author pages and per-article structured data** (`NewsArticle`, `ProfilePage`,
+  `BreadcrumbList`) — these are the E-E-A-T signals that distinguish a newsroom from a content
+  site in search, and they cost nothing once the content model has real authors.
+- **Category system** rather than tags-as-navigation: five sections matching the pillars, with
+  the accent/gold tone split carried through cards, chips, and OG images.
+- **Cards degrade to typography, not to stock photos.** A post with no photograph gets a
+  typographic tile labelled with its kind, extending the archive pattern below rather than
+  re-using the same handful of images across an index.
 
 Full direction is expressed as a working homepage mockup (see artifact delivered alongside this
 plan, v2). Summary of the system:
@@ -185,7 +216,7 @@ interaction model — production versions would read/write the real CMS content 
   ("this brand's score dropped — here's why"), explore an API/widget so other sites can embed
   JoinEthically scores (this is Good On You's actual moat and worth targeting later).
 
-## 10. Revenue model — recommendation
+## 10. Revenue model — recommendation (now implemented; see [`monetisation.md`](monetisation.md))
 
 The constraint that overrides everything else here: on a site whose entire product *is* "you can
 trust our ratings," any revenue stream that looks like it could be bought is an existential risk,

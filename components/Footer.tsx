@@ -1,4 +1,6 @@
-"use client";
+import Link from "next/link";
+import NewsletterForm from "./monetisation/NewsletterForm";
+import { site } from "@/lib/site";
 
 export default function Footer() {
   return (
@@ -6,12 +8,7 @@ export default function Footer() {
       <div className="wrap">
         <div className="news-band">
           <h2>One honest email a week. No brand partnerships disguised as picks.</h2>
-          <form className="news-form" onSubmit={(e) => e.preventDefault()}>
-            <input type="email" placeholder="you@email.com" aria-label="Email address" />
-            <button className="btn" type="submit">
-              Subscribe
-            </button>
-          </form>
+          <NewsletterForm source="footer" cta="Subscribe" />
         </div>
         <div className="foot-grid">
           <div>
@@ -24,34 +21,38 @@ export default function Footer() {
             </p>
           </div>
           <div className="foot-col">
-            <h4>Explore</h4>
-            <a href="/products">Products</a>
-            <a href="/companies">Companies</a>
-            <a href="/good-living">Good Living</a>
-            <a href="/doing-good">Doing Good</a>
+            <h4>Read</h4>
+            <Link href="/blog">The Journal</Link>
+            <Link href="/products">Products</Link>
+            <Link href="/companies">Companies</Link>
+            <Link href="/good-living">Good Living</Link>
+            <Link href="/doing-good">Doing Good</Link>
           </div>
           <div className="foot-col">
             <h4>Community</h4>
-            <a href="/forum">Forum</a>
-            <a href="/#guest-posts">Guest posts</a>
-            <a href="/#editors-picks">Editor&apos;s picks</a>
+            <Link href="/forum">Forum</Link>
+            <Link href="/blog">Guest posts</Link>
+            <a href={`mailto:${site.pitchEmail}`}>Pitch a story</a>
           </div>
           <div className="foot-col">
             <h4>About</h4>
-            <a href="/#how-we-rate">Our methodology</a>
-            <a href="#">Editorial standards</a>
-            <a href="#">Team</a>
+            <Link href="/ethics">Editorial standards</Link>
+            <Link href="/ethics">Ratings methodology</Link>
+            <Link href="/ethics">Corrections policy</Link>
           </div>
           <div className="foot-col">
-            <h4>Support</h4>
-            <a href="#">Contact</a>
-            <a href="#">Pitch a story</a>
-            <a href="#">Advertise</a>
+            <h4>Support us</h4>
+            <Link href="/membership">Membership</Link>
+            <Link href="/licensing">License the data</Link>
+            <Link href="/feed.xml">RSS</Link>
+            <a href={`mailto:${site.editorialEmail}`}>Contact</a>
           </div>
         </div>
         <div className="fine-print">
-          <span>© 2026 JoinEthically</span>
-          <span>Ratings are independent · guest and sponsored content always labeled</span>
+          <span>© {site.founded} {site.name}</span>
+          <span>
+            Ratings are independent · no display advertising · affiliate links always labelled
+          </span>
         </div>
       </div>
     </footer>

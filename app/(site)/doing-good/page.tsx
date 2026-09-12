@@ -1,28 +1,19 @@
 import type { Metadata } from "next";
+import PillarIndex from "@/components/blog/PillarIndex";
 
-export const metadata: Metadata = { title: "Doing Good" };
+export const metadata: Metadata = {
+  title: "Doing Good",
+  description:
+    "Vetted charities, giving guides, and volunteering — where your time or money actually goes furthest.",
+};
 
 export default function DoingGoodPage() {
   return (
-    <div className="wrap">
-      <div className="page-head">
-        <p className="label">Doing Good · 96 causes vetted</p>
-        <h1>Vetted charities, giving guides, and volunteering</h1>
-        <p>
-          Where your time or money actually goes furthest — vetted the same way as a product or
-          company scorecard, not a list of logos.
-        </p>
-      </div>
-      <div className="wrap" style={{ padding: "0 0 64px" }}>
-        <div className="coming-soon">
-          The full causes directory is the next build milestone. &quot;How to vet a charity in
-          fifteen minutes&quot; is already in the archive on the{" "}
-          <a className="section-link" href="/#the-archive">
-            homepage
-          </a>
-          .
-        </div>
-      </div>
-    </div>
+    <PillarIndex
+      category="doing-good"
+      count="96 causes vetted"
+      intro="Charities assessed on their accounts and their evidence, not their campaign videos — plus guides to giving and volunteering where it counts."
+      directoryNote="The vetted-charity directory, with the assessment notes behind each entry, is in build."
+    />
   );
 }

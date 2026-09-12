@@ -1,16 +1,29 @@
+import Link from "next/link";
+import PostCard from "@/components/blog/PostCard";
+import { getAllPosts, getGuestPosts } from "@/lib/content/posts";
+import { getAuthor } from "@/lib/content/authors";
+
+const LEAD_SLUG = "recycled-polyester-claims-investigation";
+
 export default function HomePage() {
+  const latest = getAllPosts()
+    .filter((post) => post.slug !== LEAD_SLUG)
+    .slice(0, 3);
+
   return (
     <>
       <div className="wrap">
         <section className="hero" style={{ borderTop: "none", paddingTop: 56 }}>
           <div>
             <p className="eyebrow label">Investigation</p>
-            <div className="hero-art">
+            <Link className="hero-art" href={`/blog/${LEAD_SLUG}`} aria-hidden="true" tabIndex={-1}>
               <span>Inside an independent wool mill, this spring</span>
-            </div>
+            </Link>
             <h1>
-              Inside the fast-fashion supply chain: what &quot;recycled polyester&quot; actually
-              means
+              <Link href={`/blog/${LEAD_SLUG}`}>
+                Inside the fast-fashion supply chain: what &quot;recycled polyester&quot; actually
+                means
+              </Link>
             </h1>
             <p className="hero-dek">
               We traced three major labels&apos; recycled-fabric claims back to their mills. The
@@ -70,12 +83,31 @@ export default function HomePage() {
         <div className="wrap">
           <div className="section-head">
             <div>
+              <p className="label section-mark">Latest</p>
+              <h2>New this week in The Journal</h2>
+            </div>
+            <Link className="section-link" href="/blog">
+              All stories →
+            </Link>
+          </div>
+          <div className="card-grid">
+            {latest.map((post) => (
+              <PostCard key={post.slug} post={post} variant="grid" />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="tight">
+        <div className="wrap">
+          <div className="section-head">
+            <div>
               <p className="label section-mark">Explore</p>
               <h2>Six ways to go deeper</h2>
             </div>
-            <a className="section-link" href="#">
-              View full directory →
-            </a>
+            <Link className="section-link" href="/blog">
+              Read The Journal →
+            </Link>
           </div>
           <div className="pillars">
             <div className="pillar pillar-feature">
@@ -161,9 +193,9 @@ export default function HomePage() {
               — we re-check every score by hand, not just on intake
             </p>
             <br />
-            <a className="section-link" href="#">
+            <Link className="section-link" href="/ethics">
               Read the full methodology →
-            </a>
+            </Link>
           </div>
           <div className="scorecard">
             <div className="sc-head">
@@ -212,47 +244,39 @@ export default function HomePage() {
               <p className="label section-mark">From our community</p>
               <h2>Guest posts this week</h2>
             </div>
-            <a className="section-link" href="#">
+            <a className="section-link" href="mailto:pitch@joinethically.com">
               Pitch us a story →
             </a>
           </div>
           <div className="guest-strip">
-            <div className="guest-card">
-              <div className="guest-photo coffee" />
-              <span className="guest-tag">Guest essay</span>
-              <h3>
-                I ran my family&apos;s grocery budget through an ethics filter for a month.
-                Here&apos;s the real cost.
-              </h3>
-              <div className="guest-by">
-                <span className="avatar" style={{ background: "var(--gold-soft)", color: "var(--gold-ink)" }}>
-                  RT
-                </span>
-                <span>Rosa Tovar, reader contributor</span>
-              </div>
-            </div>
-            <div className="guest-card">
-              <div className="guest-photo mill" />
-              <span className="guest-tag">Guest essay</span>
-              <h3>What working inside a &quot;sustainable&quot; factory actually taught me</h3>
-              <div className="guest-by">
-                <span className="avatar" style={{ background: "var(--gold-soft)", color: "var(--gold-ink)" }}>
-                  DA
-                </span>
-                <span>Daniel Aoki, former textile auditor</span>
-              </div>
-            </div>
-            <div className="guest-card">
-              <div className="guest-photo refill" />
-              <span className="guest-tag">Guest essay</span>
-              <h3>Small business, big conscience: pricing fairly when your costs are 20% higher</h3>
-              <div className="guest-by">
-                <span className="avatar" style={{ background: "var(--gold-soft)", color: "var(--gold-ink)" }}>
-                  PL
-                </span>
-                <span>Priya Lall, founder, Anew Refill</span>
-              </div>
-            </div>
+            {getGuestPosts()
+              .slice(0, 3)
+              .map((post) => {
+                const author = getAuthor(post.authorSlug);
+                return (
+                  <Link className="guest-card" key={post.slug} href={`/blog/${post.slug}`}>
+                    <span
+                      className="guest-photo"
+                      style={
+                        post.hero ? { backgroundImage: `url(${post.hero.src})` } : undefined
+                      }
+                    />
+                    <span className="guest-tag">Guest essay</span>
+                    <h3>{post.title}</h3>
+                    <span className="guest-by">
+                      <span
+                        className="avatar"
+                        style={{ background: "var(--gold-soft)", color: "var(--gold-ink)" }}
+                      >
+                        {author.initials}
+                      </span>
+                      <span>
+                        {author.name}, {author.role.toLowerCase()}
+                      </span>
+                    </span>
+                  </Link>
+                );
+              })}
           </div>
         </div>
       </section>
@@ -348,57 +372,43 @@ export default function HomePage() {
               <p className="label section-mark">The archive</p>
               <h2>Older, but not less true</h2>
             </div>
-            <a className="section-link" href="#">
+            <Link className="section-link" href="/blog">
               View the full archive →
-            </a>
+            </Link>
           </div>
           <div className="archive-grid">
-            <div className="archive-row">
-              <span className="archive-cat" style={{ color: "var(--accent-ink)" }}>
-                Products
-              </span>
-              <span className="archive-title">
-                Why &quot;vegan leather&quot; is mostly plastic — a materials primer
-              </span>
-              <span className="archive-meta num">Jul 29</span>
-            </div>
-            <div className="archive-row">
-              <span className="archive-cat" style={{ color: "var(--gold-ink)" }}>
-                Doing Good
-              </span>
-              <span className="archive-title">How to vet a charity in fifteen minutes</span>
-              <span className="archive-meta num">Jul 11</span>
-            </div>
-            <div className="archive-row">
-              <span className="archive-cat" style={{ color: "var(--accent-ink)" }}>
-                Companies
-              </span>
-              <span className="archive-title">
-                We asked 12 apparel brands for their factory list. Four answered.
-              </span>
-              <span className="archive-meta num">Jul 22</span>
-            </div>
-            <div className="archive-row">
-              <span className="archive-cat" style={{ color: "var(--accent-ink)" }}>
-                News
-              </span>
-              <span className="archive-title">B Corp recertification is getting harder. Good.</span>
-              <span className="archive-meta num">Jul 6</span>
-            </div>
-            <div className="archive-row">
-              <span className="archive-cat" style={{ color: "var(--gold-ink)" }}>
-                Good Living
-              </span>
-              <span className="archive-title">The ethics of re-gifting, actually</span>
-              <span className="archive-meta num">Jul 18</span>
-            </div>
-            <div className="archive-row">
-              <span className="archive-cat" style={{ color: "var(--gold-ink)" }}>
-                Good Living
-              </span>
-              <span className="archive-title">Reader mailbag: is secondhand always better?</span>
-              <span className="archive-meta num">Jun 30</span>
-            </div>
+            {getAllPosts()
+              .slice(3)
+              .map((post) => (
+                <Link className="archive-row" key={post.slug} href={`/blog/${post.slug}`}>
+                  <span
+                    className="archive-cat"
+                    style={{
+                      color:
+                        post.category === "good-living" || post.category === "doing-good"
+                          ? "var(--gold-ink)"
+                          : "var(--accent-ink)",
+                    }}
+                  >
+                    {post.category === "good-living"
+                      ? "Good Living"
+                      : post.category === "doing-good"
+                        ? "Doing Good"
+                        : post.category === "news"
+                          ? "News"
+                          : post.category === "products"
+                            ? "Products"
+                            : "Companies"}
+                  </span>
+                  <span className="archive-title">{post.title}</span>
+                  <span className="archive-meta num">
+                    {new Date(post.publishedAt).toLocaleDateString("en-GB", {
+                      day: "numeric",
+                      month: "short",
+                    })}
+                  </span>
+                </Link>
+              ))}
           </div>
 
           <div className="directory-row">
