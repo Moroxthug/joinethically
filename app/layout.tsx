@@ -5,6 +5,7 @@ import { organisationJsonLd, websiteJsonLd } from "@/lib/structured-data";
 import { isProductionSite, site, siteUrl } from "@/lib/site";
 import "./globals.css";
 import "./blog.css";
+import "./home.css";
 import "./commerce.css";
 
 export const metadata: Metadata = {

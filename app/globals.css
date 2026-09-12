@@ -185,61 +185,6 @@ nav.primary a[aria-current="page"]::after {
   border-color: var(--accent-ink);
 }
 
-/* hero */
-.hero {
-  padding: 56px 32px 64px;
-  display: grid;
-  grid-template-columns: 1.55fr 1fr;
-  gap: 56px;
-}
-.eyebrow {
-  color: var(--accent-ink);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 18px;
-}
-.eyebrow::before {
-  content: "";
-  width: 20px;
-  height: 1px;
-  background: var(--gold);
-  display: inline-block;
-}
-.hero-art {
-  aspect-ratio: 16 / 10;
-  border-radius: 4px;
-  margin-bottom: 22px;
-  background-image: linear-gradient(180deg, rgba(20, 22, 17, 0) 55%, rgba(20, 22, 17, 0.62) 100%),
-    url("/images/hero-mill.jpg");
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  overflow: hidden;
-}
-.hero-art span {
-  position: absolute;
-  bottom: 14px;
-  left: 16px;
-  font-family: var(--font-sans);
-  font-size: 0.68rem;
-  letter-spacing: 0.06em;
-  color: rgba(255, 255, 255, 0.92);
-  text-transform: uppercase;
-}
-.hero h1 {
-  font-size: 2.6rem;
-  line-height: 1.12;
-  letter-spacing: -0.01em;
-}
-.hero-dek {
-  font-family: var(--font-sans);
-  color: var(--ink-soft);
-  font-size: 1.02rem;
-  line-height: 1.6;
-  margin-top: 16px;
-  max-width: 60ch;
-}
 .pullquote {
   font-style: italic;
   font-size: 1.28rem;
@@ -260,15 +205,6 @@ nav.primary a[aria-current="page"]::after {
   color: var(--gold);
   font-style: normal;
   line-height: 1;
-}
-.byline {
-  margin-top: 24px;
-  font-family: var(--font-sans);
-  font-size: 0.82rem;
-  color: var(--ink-faint);
-  display: flex;
-  gap: 10px;
-  align-items: center;
 }
 .avatar {
   width: 24px;
@@ -385,131 +321,7 @@ section.tight {
   white-space: nowrap;
 }
 
-/* pillars grid — bento layout, Ethical Products as the lead tile */
-.pillars {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, minmax(158px, auto));
-  grid-template-areas:
-    "a a b"
-    "a a c"
-    "d e f";
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-}
-.pillar {
-  background: var(--bg-raised);
-  padding: 30px 26px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-.pillar .mark {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: var(--accent-soft);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--accent-ink);
-  font-size: 1rem;
-}
-.pillar h3 {
-  font-size: 1.1rem;
-}
-.pillar p {
-  font-family: var(--font-sans);
-  font-size: 0.83rem;
-  color: var(--ink-soft);
-  line-height: 1.55;
-  margin: 0;
-  flex: 1;
-}
-.pillar .count {
-  font-family: var(--font-sans);
-  font-size: 0.74rem;
-  color: var(--ink-faint);
-}
-
-.pillar-feature {
-  grid-area: a;
-  padding: 0;
-  position: relative;
-  overflow: hidden;
-  gap: 0;
-  background-image: linear-gradient(180deg, rgba(17, 19, 14, 0) 38%, rgba(15, 17, 12, 0.82) 100%),
-    url("/images/pick-wool.jpg");
-  background-size: cover;
-  background-position: center;
-}
-.pillar-feature-content {
-  position: absolute;
-  inset: 0;
-  padding: 30px 32px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 10px;
-}
-.pillar-feature .mark {
-  background: rgba(255, 255, 255, 0.2);
-  color: #fdfcf7;
-}
-.feature-tag {
-  font-family: var(--font-sans);
-  font-size: 0.68rem;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: var(--gold);
-}
-.pillar-feature h3 {
-  font-size: 1.5rem;
-  color: #fdfcf7;
-}
-.pillar-feature p {
-  color: rgba(253, 252, 247, 0.86);
-  flex: none;
-  max-width: 38ch;
-}
-.feature-highlight {
-  font-family: var(--font-sans);
-  font-size: 0.78rem;
-  color: #fdfcf7;
-  background: rgba(255, 255, 255, 0.14);
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  border-radius: 20px;
-  padding: 6px 13px;
-  width: fit-content;
-}
-.pillar-feature .count {
-  color: rgba(253, 252, 247, 0.72);
-}
-.pillar-b {
-  grid-area: b;
-}
-.pillar-c {
-  grid-area: c;
-}
-.pillar-d {
-  grid-area: d;
-}
-.pillar-e {
-  grid-area: e;
-}
-.pillar-f {
-  grid-area: f;
-}
-
 /* rating scorecard */
-.scorecard-wrap {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
-  align-items: center;
-}
 .scorecard {
   background: var(--bg-raised);
   border: 1px solid var(--line);
@@ -612,17 +424,6 @@ section.tight {
   font-family: var(--font-sans);
   font-size: 0.76rem;
   color: var(--ink-faint);
-}
-.scorecard-copy h2 {
-  font-size: 1.7rem;
-  margin-bottom: 16px;
-}
-.scorecard-copy p {
-  font-family: var(--font-sans);
-  color: var(--ink-soft);
-  line-height: 1.65;
-  font-size: 0.95rem;
-  margin: 0 0 14px;
 }
 
 /* guest posts */
@@ -935,27 +736,10 @@ footer {
 }
 
 @media (max-width: 860px) {
-  .hero {
-    grid-template-columns: 1fr;
-  }
-  .pillars {
-    grid-template-columns: 1fr;
-    grid-template-rows: none;
-    grid-template-areas: none;
-  }
-  .pillar-feature {
-    min-height: 260px;
-  }
-  .pillar-feature h3 {
-    font-size: 1.2rem;
-  }
   .guest-strip {
     grid-template-columns: 1fr;
   }
   .forum-wrap {
-    grid-template-columns: 1fr;
-  }
-  .scorecard-wrap {
     grid-template-columns: 1fr;
   }
   .archive-grid {

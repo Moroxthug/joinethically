@@ -1,0 +1,358 @@
+/* ==========================================================================
+   The front page.
+
+   A publication front, not a marketing page: the lead story gets the space, a
+   brief rail carries what else broke, and each section band shows real work
+   rather than describing the section.
+   ========================================================================== */
+
+.today-bar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line-strong);
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  color: var(--ink-faint);
+}
+.today-mark {
+  color: var(--accent-ink);
+}
+.today-stats {
+  letter-spacing: 0.01em;
+}
+
+/* --- the front ----------------------------------------------------------- */
+
+.front {
+  display: grid;
+  grid-template-columns: 232px minmax(0, 1fr) 288px;
+  gap: 40px;
+  padding: 34px 0 52px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* Left rail: what else broke. Text-only by design — photographs here would
+   compete with the lead rather than support it. */
+.front-brief {
+  border-right: 1px solid var(--line);
+  padding-right: 32px;
+}
+.front-brief-list {
+  margin: 14px 0 18px;
+}
+.front-brief .card-compact {
+  padding: 13px 0;
+}
+.front-brief .card-compact-title {
+  font-size: 0.98rem;
+}
+
+.front-lead {
+  min-width: 0;
+}
+.front-kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--accent-ink);
+}
+.front-kicker::before {
+  content: "";
+  width: 20px;
+  height: 1px;
+  background: var(--gold);
+}
+.front-kicker-time {
+  color: var(--ink-faint);
+  font-weight: 600;
+}
+.front-title {
+  font-size: 2.9rem;
+  line-height: 1.08;
+  letter-spacing: -0.018em;
+  margin-top: 16px;
+}
+.front-title a:hover {
+  color: var(--accent-ink);
+}
+.front-dek {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 16px 0 0;
+  max-width: 58ch;
+}
+.front-media {
+  display: block;
+  position: relative;
+  margin-top: 24px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--accent-soft);
+}
+.front-media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.front-media:hover img {
+  transform: scale(1.02);
+}
+.front-media-cap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 34px 18px 14px;
+  background: linear-gradient(180deg, rgba(20, 22, 17, 0) 0%, rgba(20, 22, 17, 0.68) 100%);
+  color: rgba(255, 255, 255, 0.94);
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+.front-lead .pullquote {
+  margin-top: 26px;
+}
+.front-byline {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  margin: 24px 0 0;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+}
+
+/* Right rail: the Editor's Picks, kept — it's the one module that says
+   "someone chose this" out loud. */
+.front-picks {
+  border-left: 1px solid var(--line);
+  padding-left: 32px;
+}
+/* At rail width the head has no room for a side-by-side hand-tag. */
+.front-picks .picks-head {
+  flex-direction: column;
+  gap: 8px;
+}
+.front-picks .picks-head h2 {
+  font-size: 1.15rem;
+  margin-top: 6px;
+}
+.front-picks .pick-item h3 {
+  font-size: 0.92rem;
+}
+.front-picks .score-chip {
+  align-self: flex-start;
+}
+
+.front-member {
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line-strong);
+}
+.front-member .label {
+  color: var(--gold-ink);
+}
+.front-member p {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 8px 0 16px;
+}
+
+/* --- section fronts ------------------------------------------------------ */
+
+.split-front {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 56px;
+  align-items: start;
+}
+.split-main .card-river:first-child {
+  padding-top: 0;
+}
+.split-main .card-river:last-child {
+  border-bottom: none;
+}
+.split-side {
+  border-left: 1px solid var(--line);
+  padding-left: 32px;
+}
+.split-side .scorecard {
+  /* Room for the stamp badge, which deliberately overhangs the card. */
+  margin-top: 34px;
+}
+.split-side-note {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 20px 0 12px;
+}
+.split-side .hand-tag {
+  display: inline-block;
+  margin-bottom: 14px;
+}
+
+.living-front {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 48px;
+  align-items: start;
+}
+.living-list .card-compact:first-child {
+  padding-top: 0;
+}
+
+/* --- membership band ----------------------------------------------------- */
+
+.home-member {
+  background: var(--ink);
+  border-top: none;
+}
+.home-member-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: center;
+}
+.home-member-kicker {
+  color: var(--gold);
+}
+.home-member h2 {
+  font-size: 1.9rem;
+  line-height: 1.18;
+  color: #fdfcf7;
+  margin-top: 12px;
+  max-width: 22ch;
+}
+.home-member p {
+  font-family: var(--font-sans);
+  font-size: 0.94rem;
+  line-height: 1.65;
+  color: rgba(253, 252, 247, 0.76);
+  margin: 16px 0 0;
+  max-width: 58ch;
+}
+.home-member-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 26px;
+  flex-wrap: wrap;
+}
+.home-member .btn {
+  background: var(--bg-top);
+  color: var(--ink);
+  border-color: var(--bg-top);
+}
+.home-member .btn:hover {
+  background: var(--gold-soft);
+  border-color: var(--gold-soft);
+}
+.home-member .section-link {
+  color: var(--gold);
+}
+.home-member-news {
+  border-left: 1px solid rgba(253, 252, 247, 0.18);
+  padding-left: 36px;
+}
+.home-member-news .label {
+  color: rgba(253, 252, 247, 0.62);
+}
+.home-member-news-copy {
+  margin-bottom: 16px !important;
+}
+.home-member-news input {
+  background: rgba(253, 252, 247, 0.07);
+  border-color: rgba(253, 252, 247, 0.26);
+  color: #fdfcf7;
+}
+.home-member-news input::placeholder {
+  color: rgba(253, 252, 247, 0.45);
+}
+.home-member-news .news-result {
+  color: var(--gold);
+}
+
+/* --- responsive ---------------------------------------------------------- */
+
+@media (max-width: 1080px) {
+  .front {
+    grid-template-columns: minmax(0, 1fr) 288px;
+  }
+  .front-brief {
+    grid-column: 1 / -1;
+    order: 3;
+    border-right: none;
+    border-top: 1px solid var(--line);
+    padding-right: 0;
+    padding-top: 24px;
+  }
+  .front-brief-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 32px;
+  }
+  .split-front,
+  .living-front {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .split-side {
+    border-left: none;
+    border-top: 1px solid var(--line);
+    padding-left: 0;
+    padding-top: 26px;
+  }
+}
+
+@media (max-width: 860px) {
+  .front {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .front-title {
+    font-size: 2.05rem;
+  }
+  .front-picks {
+    border-left: none;
+    border-top: 1px solid var(--line);
+    padding-left: 0;
+    padding-top: 24px;
+  }
+  .front-brief-list {
+    grid-template-columns: 1fr;
+  }
+  .home-member-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .home-member h2 {
+    font-size: 1.5rem;
+  }
+  .home-member-news {
+    border-left: none;
+    border-top: 1px solid rgba(253, 252, 247, 0.18);
+    padding-left: 0;
+    padding-top: 26px;
+  }
+  .today-bar {
+    font-size: 0.68rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .front-media img {
+    transition: none;
+  }
+}

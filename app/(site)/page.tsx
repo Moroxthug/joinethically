@@ -1,296 +1,292 @@
 import Link from "next/link";
-import PostCard from "@/components/blog/PostCard";
-import { getAllPosts, getGuestPosts } from "@/lib/content/posts";
+import PostCard, { formatLongDate } from "@/components/blog/PostCard";
+import Scorecard from "@/components/blog/Scorecard";
+import NewsletterForm from "@/components/monetisation/NewsletterForm";
 import { getAuthor } from "@/lib/content/authors";
+import { CATEGORIES } from "@/lib/content/categories";
+import {
+  getAllPosts,
+  getFeaturedPost,
+  getGuestPosts,
+  getPostsByCategory,
+} from "@/lib/content/posts";
 
-const LEAD_SLUG = "recycled-polyester-claims-investigation";
-
+/**
+ * The front page.
+ *
+ * Structured as a publication front rather than a marketing page: a lead story
+ * that gets the space, a brief rail of what else broke, and section fronts that
+ * show real work instead of describing it. Everything renders from the same
+ * content layer as The Journal, so the homepage can never drift from what has
+ * actually been published.
+ */
 export default function HomePage() {
-  const latest = getAllPosts()
-    .filter((post) => post.slug !== LEAD_SLUG)
-    .slice(0, 3);
+  const lead = getFeaturedPost();
+  const leadAuthor = getAuthor(lead.authorSlug);
+  const rest = getAllPosts().filter((post) => post.slug !== lead.slug);
+
+  const brief = rest.slice(0, 4);
+  const products = getPostsByCategory("products");
+  const companies = getPostsByCategory("companies");
+  const living = [...getPostsByCategory("good-living"), ...getPostsByCategory("doing-good")]
+    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+    .slice(0, 4);
+  const guests = getGuestPosts().slice(0, 3);
+  const archive = rest.slice(4);
+
+  const updated = getAllPosts()[0];
 
   return (
     <>
       <div className="wrap">
-        <section className="hero" style={{ borderTop: "none", paddingTop: 56 }}>
-          <div>
-            <p className="eyebrow label">Investigation</p>
-            <Link className="hero-art" href={`/blog/${LEAD_SLUG}`} aria-hidden="true" tabIndex={-1}>
-              <span>Inside an independent wool mill, this spring</span>
-            </Link>
-            <h1>
-              <Link href={`/blog/${LEAD_SLUG}`}>
-                Inside the fast-fashion supply chain: what &quot;recycled polyester&quot; actually
-                means
-              </Link>
-            </h1>
-            <p className="hero-dek">
-              We traced three major labels&apos; recycled-fabric claims back to their mills. The
-              certifications check out — the math behind them doesn&apos;t. A six-month
-              investigation.
-            </p>
-            <blockquote className="pullquote">
-              The labels are accurate. The volume math behind them isn&apos;t — and until now, no
-              one outside the mills was checking.
-            </blockquote>
-            <div className="byline">
-              <span className="avatar">MK</span>
-              <span>Mira Kessler · Investigations Editor · 11 min read</span>
+        {/* Publication furniture: date and scale, the two things a front page
+            states before anything else. */}
+        <div className="today-bar">
+          <span className="label today-mark">Independent · reader-funded</span>
+          <time className="num" dateTime={updated.updatedAt ?? updated.publishedAt}>
+            {formatLongDate(updated.updatedAt ?? updated.publishedAt)}
+          </time>
+          <span className="today-stats num">
+            1,204 products rated · 340 companies tracked · 96 causes vetted
+          </span>
+        </div>
+
+        <section className="front">
+          <div className="front-brief">
+            <p className="label section-mark">The brief</p>
+            <div className="front-brief-list">
+              {brief.map((post) => (
+                <PostCard key={post.slug} post={post} variant="compact" />
+              ))}
             </div>
+            <Link className="section-link" href="/blog">
+              Everything we&apos;ve published →
+            </Link>
           </div>
 
-          <div className="picks" id="editors-picks">
+          <article className="front-lead">
+            <p className="label front-kicker">
+              Investigation
+              <span className="front-kicker-time num">{lead.readingMinutes} min read</span>
+            </p>
+            <h1 className="front-title">
+              <Link href={`/blog/${lead.slug}`}>{lead.title}</Link>
+            </h1>
+            <p className="front-dek">{lead.dek}</p>
+            <Link className="front-media" href={`/blog/${lead.slug}`} tabIndex={-1} aria-hidden="true">
+              {lead.hero && (
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img src={lead.hero.src} alt="" />
+              )}
+              {lead.hero?.caption && <span className="front-media-cap">{lead.hero.caption}</span>}
+            </Link>
+            <blockquote className="pullquote">
+              The labels are accurate. The volume maths behind them isn&apos;t — and until now, no
+              one outside the mills was checking.
+            </blockquote>
+            <p className="front-byline">
+              <span className="avatar">{leadAuthor.initials}</span>
+              <span>
+                {leadAuthor.name} · {leadAuthor.role}
+              </span>
+              <Link className="section-link" href={`/blog/${lead.slug}`}>
+                Read the investigation →
+              </Link>
+            </p>
+          </article>
+
+          <aside className="front-picks" id="editors-picks">
             <div className="picks-head">
               <div>
                 <p className="label">Editor&apos;s Picks — August</p>
-                <h2 style={{ fontSize: "1.2rem", marginTop: 6 }}>This month, we recommend</h2>
+                <h2>This month, we recommend</h2>
               </div>
               <span className="hand-tag">picked by hand, not by algorithm</span>
             </div>
             <div className="pick-item">
               <span className="pick-rank num">01</span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img className="pick-thumb" src="/images/pick-wool.jpg" alt="" />
               <div>
                 <h3>Kadu Wool Co. — merino base layers</h3>
-                <p>Traceable to a single regenerative farm in Patagonia. No exceptions this month.</p>
+                <p>Traceable to a single regenerative farm in Patagonia.</p>
               </div>
-              <span className="score-chip num">92 · Great</span>
+              <span className="score-chip num">92</span>
             </div>
             <div className="pick-item">
               <span className="pick-rank num">02</span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img className="pick-thumb" src="/images/pick-coffee.jpg" alt="" />
               <div>
                 <h3>Ledger Coffee Roasters</h3>
                 <p>Direct-trade contracts published in full, farmer by farmer.</p>
               </div>
-              <span className="score-chip num">88 · Great</span>
+              <span className="score-chip num">88</span>
             </div>
             <div className="pick-item">
               <span className="pick-rank num">03</span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img className="pick-thumb" src="/images/pick-refill.jpg" alt="" />
               <div>
                 <h3>Anew Refill Pharmacy</h3>
                 <p>Zero-waste household staples, priced fairly, no subscription trap.</p>
               </div>
-              <span className="score-chip num">85 · Great</span>
+              <span className="score-chip num">85</span>
             </div>
-          </div>
+
+            <div className="front-member">
+              <p className="label">No advertisers</p>
+              <p>
+                Nobody can pay us for a better score. Readers are the entire business model.
+              </p>
+              <Link className="btn" href="/membership">
+                Support us — from £5/mo
+              </Link>
+            </div>
+          </aside>
         </section>
       </div>
 
+      {/* --- Section front: what to buy ---------------------------------- */}
       <section className="tight">
         <div className="wrap">
           <div className="section-head">
             <div>
-              <p className="label section-mark">Latest</p>
-              <h2>New this week in The Journal</h2>
+              <p className="label section-mark">Ethical Products</p>
+              <h2>What to buy, and what it scored</h2>
             </div>
-            <Link className="section-link" href="/blog">
-              All stories →
+            <Link className="section-link" href="/products">
+              All reviews →
+            </Link>
+          </div>
+          <div className="split-front">
+            <div className="split-main">
+              {products.map((post) => (
+                <PostCard key={post.slug} post={post} />
+              ))}
+            </div>
+            <div className="split-side">
+              <p className="label section-mark">A scorecard, in full</p>
+              <Scorecard
+                data={{
+                  entity: "Kadu Wool Co.",
+                  category: "Apparel · Base layers",
+                  people: 95,
+                  planet: 88,
+                  transparency: 93,
+                  sourceCount: 14,
+                  lastVerified: "2026-08-14",
+                }}
+              />
+              <p className="split-side-note">
+                Every product and company gets the same three questions: how it treats people, how
+                it treats the planet, and how honest it is about both. Scores are built from
+                primary evidence — never brand press kits.
+              </p>
+              <p className="hand-tag">— we re-check every score by hand, not just on intake</p>
+              <Link className="section-link" href="/ethics">
+                Read the full methodology →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- Section front: companies ------------------------------------ */}
+      <section className="tight">
+        <div className="wrap">
+          <div className="section-head">
+            <div>
+              <p className="label section-mark">Ethical Companies</p>
+              <h2>Who deserves the benefit of the doubt</h2>
+            </div>
+            <Link className="section-link" href="/companies">
+              All company coverage →
             </Link>
           </div>
           <div className="card-grid">
-            {latest.map((post) => (
+            {companies.map((post) => (
               <PostCard key={post.slug} post={post} variant="grid" />
             ))}
           </div>
         </div>
       </section>
 
+      {/* --- Section front: living + giving ------------------------------ */}
       <section className="tight">
         <div className="wrap">
           <div className="section-head">
             <div>
-              <p className="label section-mark">Explore</p>
-              <h2>Six ways to go deeper</h2>
+              <p className="label section-mark">Good Living &amp; Doing Good</p>
+              <h2>The practical end of it</h2>
             </div>
-            <Link className="section-link" href="/blog">
-              Read The Journal →
+            <Link className="section-link" href="/good-living">
+              All guides →
             </Link>
           </div>
-          <div className="pillars">
-            <div className="pillar pillar-feature">
-              <div className="pillar-feature-content">
-                <div className="mark">◆</div>
-                <span className="feature-tag">Flagship pillar</span>
-                <h3>Ethical Products</h3>
-                <p>
-                  Independently scored reviews of what to buy — fashion, home, beauty, tech —
-                  ranked on people, planet, and honesty.
-                </p>
-                <span className="feature-highlight">
-                  Top-rated this week: <strong>Kadu Wool Co.</strong> · 92
-                </span>
-                <span className="count num">1,204 products rated</span>
-              </div>
-            </div>
-            <div className="pillar pillar-b">
-              <div className="mark">◆</div>
-              <h3>Ethical Companies</h3>
-              <p>
-                Brand scorecards built from public disclosures, labor records, and supply-chain
-                audits — updated as new evidence lands.
-              </p>
-              <span className="count num">340 companies tracked</span>
-            </div>
-            <div className="pillar pillar-c">
-              <div className="mark">◇</div>
-              <h3>Good Living</h3>
-              <p>
-                Practical guidance on living with your values intact — money, food, relationships,
-                and the small daily choices.
-              </p>
-              <span className="count num">210 guides</span>
-            </div>
-            <div className="pillar pillar-d">
-              <div className="mark">◇</div>
-              <h3>Doing Good</h3>
-              <p>
-                Vetted charities, volunteering opportunities, and giving guides — where your time
-                or money goes furthest.
-              </p>
-              <span className="count num">96 causes vetted</span>
-            </div>
-            <div className="pillar pillar-e">
-              <div className="mark">◆</div>
-              <h3>News &amp; Investigations</h3>
-              <p>
-                Original reporting and a daily digest of the ethics, sustainability, and
-                accountability stories that matter.
-              </p>
-              <span className="count num">Updated daily</span>
-            </div>
-            <div className="pillar pillar-f">
-              <div className="mark">◇</div>
-              <h3>The Forum</h3>
-              <p>
-                Ask the community, get sourced answers, and let our AI companion surface the
-                relevant reporting as you go.
-              </p>
-              <span className="count num">8,900 members</span>
+          <div className="living-front">
+            <PostCard post={living[0]} variant="grid" />
+            <div className="living-list">
+              {living.slice(1).map((post) => (
+                <PostCard key={post.slug} post={post} variant="compact" />
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      <section id="how-we-rate">
-        <div className="wrap scorecard-wrap">
-          <div className="scorecard-copy">
-            <p className="label section-mark">How we rate</p>
-            <h2>One score, three questions we actually check</h2>
-            <p>
-              Every product and company on JoinEthically gets the same scorecard: how it treats
-              people, how it treats the planet, and how honest it is about both. Scores are
-              assembled by our editors from primary sources — certifications, disclosures, factory
-              audits — never brand press kits.
-            </p>
-            <p>
-              Readers can see the sourcing behind every point. If a company changes course, the
-              score moves with it.
-            </p>
-            <p className="hand-tag" style={{ display: "inline-block", marginBottom: 16 }}>
-              — we re-check every score by hand, not just on intake
-            </p>
-            <br />
-            <Link className="section-link" href="/ethics">
-              Read the full methodology →
-            </Link>
-          </div>
-          <div className="scorecard">
-            <div className="sc-head">
-              <div>
-                <h3>Kadu Wool Co.</h3>
-                <p className="cat">Apparel · Base layers</p>
-              </div>
-              <span className="sc-verdict">Recommended</span>
-            </div>
-            <div className="sc-score">
-              <span className="n num">92</span>
-              <span className="of">/ 100</span>
-            </div>
-            <div className="sc-bars">
-              <div className="sc-bar-row">
-                <span className="lbl">People</span>
-                <div className="sc-bar-track">
-                  <div className="sc-bar-fill" style={{ width: "95%" }} />
-                </div>
-                <span className="val num">95</span>
-              </div>
-              <div className="sc-bar-row">
-                <span className="lbl">Planet</span>
-                <div className="sc-bar-track">
-                  <div className="sc-bar-fill" style={{ width: "88%" }} />
-                </div>
-                <span className="val num">88</span>
-              </div>
-              <div className="sc-bar-row">
-                <span className="lbl">Transparency</span>
-                <div className="sc-bar-track">
-                  <div className="sc-bar-fill" style={{ width: "93%" }} />
-                </div>
-                <span className="val num">93</span>
-              </div>
-            </div>
-            <div className="sc-foot">Sourced from 14 public disclosures · last verified 3 days ago</div>
-          </div>
-        </div>
-      </section>
-
+      {/* --- Guest essays ------------------------------------------------ */}
       <section className="tight" id="guest-posts">
         <div className="wrap">
           <div className="section-head">
             <div>
               <p className="label section-mark">From our community</p>
-              <h2>Guest posts this week</h2>
+              <h2>Guest essays</h2>
             </div>
             <a className="section-link" href="mailto:pitch@joinethically.com">
               Pitch us a story →
             </a>
           </div>
           <div className="guest-strip">
-            {getGuestPosts()
-              .slice(0, 3)
-              .map((post) => {
-                const author = getAuthor(post.authorSlug);
-                return (
-                  <Link className="guest-card" key={post.slug} href={`/blog/${post.slug}`}>
+            {guests.map((post) => {
+              const author = getAuthor(post.authorSlug);
+              return (
+                <Link className="guest-card" key={post.slug} href={`/blog/${post.slug}`}>
+                  <span
+                    className="guest-photo"
+                    style={post.hero ? { backgroundImage: `url(${post.hero.src})` } : undefined}
+                  />
+                  <span className="guest-tag">Guest essay</span>
+                  <h3>{post.title}</h3>
+                  <span className="guest-by">
                     <span
-                      className="guest-photo"
-                      style={
-                        post.hero ? { backgroundImage: `url(${post.hero.src})` } : undefined
-                      }
-                    />
-                    <span className="guest-tag">Guest essay</span>
-                    <h3>{post.title}</h3>
-                    <span className="guest-by">
-                      <span
-                        className="avatar"
-                        style={{ background: "var(--gold-soft)", color: "var(--gold-ink)" }}
-                      >
-                        {author.initials}
-                      </span>
-                      <span>
-                        {author.name}, {author.role.toLowerCase()}
-                      </span>
+                      className="avatar"
+                      style={{ background: "var(--gold-soft)", color: "var(--gold-ink)" }}
+                    >
+                      {author.initials}
                     </span>
-                  </Link>
-                );
-              })}
+                    <span>
+                      {author.name}, {author.role}
+                    </span>
+                  </span>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section>
+      {/* --- Forum ------------------------------------------------------- */}
+      <section className="tight">
         <div className="wrap">
           <div className="section-head">
             <div>
               <p className="label section-mark">The forum</p>
               <h2>Ask the community — sourced, not vibes</h2>
             </div>
-            <a className="section-link" href="/forum">
+            <Link className="section-link" href="/forum">
               Open the forum →
-            </a>
+            </Link>
           </div>
           <div className="forum-wrap">
             <div className="thread-list">
@@ -321,7 +317,9 @@ export default function HomePage() {
               </div>
               <div className="thread">
                 <div>
-                  <div className="thread-t">Anyone tried Kadu&apos;s base layers in real winter conditions?</div>
+                  <div className="thread-t">
+                    Anyone tried Kadu&apos;s base layers in real winter conditions?
+                  </div>
                   <div className="thread-meta">Started by @travisr · Ethical Products</div>
                 </div>
                 <span className="thread-replies num">12 replies</span>
@@ -365,6 +363,37 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* --- Membership band --------------------------------------------- */}
+      <section className="home-member">
+        <div className="wrap home-member-inner">
+          <div>
+            <p className="label home-member-kicker">Why this is free</p>
+            <h2>We take no advertising, so a brand can never become our customer.</h2>
+            <p>
+              Every rating stays free to read. Affiliate links appear only on products that
+              already cleared an independent scorecard, and reviewers cannot see what a link pays.
+              Membership is what makes that refusal affordable.
+            </p>
+            <div className="home-member-actions">
+              <Link className="btn" href="/membership">
+                See membership
+              </Link>
+              <Link className="section-link" href="/ethics">
+                How we make money →
+              </Link>
+            </div>
+          </div>
+          <div className="home-member-news">
+            <p className="label">The weekly email</p>
+            <p className="home-member-news-copy">
+              One honest email a week. No brand partnerships disguised as picks.
+            </p>
+            <NewsletterForm source="home-band" cta="Subscribe" compact />
+          </div>
+        </div>
+      </section>
+
+      {/* --- Archive + directories --------------------------------------- */}
       <section className="tight">
         <div className="wrap">
           <div className="section-head">
@@ -377,28 +406,16 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="archive-grid">
-            {getAllPosts()
-              .slice(3)
-              .map((post) => (
+            {archive.map((post) => {
+              const gold = post.category === "good-living" || post.category === "doing-good";
+              const name = CATEGORIES.find((c) => c.slug === post.category)?.shortName ?? "";
+              return (
                 <Link className="archive-row" key={post.slug} href={`/blog/${post.slug}`}>
                   <span
                     className="archive-cat"
-                    style={{
-                      color:
-                        post.category === "good-living" || post.category === "doing-good"
-                          ? "var(--gold-ink)"
-                          : "var(--accent-ink)",
-                    }}
+                    style={{ color: gold ? "var(--gold-ink)" : "var(--accent-ink)" }}
                   >
-                    {post.category === "good-living"
-                      ? "Good Living"
-                      : post.category === "doing-good"
-                        ? "Doing Good"
-                        : post.category === "news"
-                          ? "News"
-                          : post.category === "products"
-                            ? "Products"
-                            : "Companies"}
+                    {name}
                   </span>
                   <span className="archive-title">{post.title}</span>
                   <span className="archive-meta num">
@@ -408,38 +425,31 @@ export default function HomePage() {
                     })}
                   </span>
                 </Link>
-              ))}
+              );
+            })}
           </div>
 
           <div className="directory-row">
-            <div className="directory-card">
+            <Link className="directory-card" href="/products">
               <span className="n num">1,204</span>
               <span className="name">products, fully rated</span>
-              <a className="go" href="/products">
-                Browse the directory →
-              </a>
-            </div>
-            <div className="directory-card">
+              <span className="go">Browse the directory →</span>
+            </Link>
+            <Link className="directory-card" href="/companies">
               <span className="n num">340</span>
               <span className="name">companies tracked</span>
-              <a className="go" href="/companies">
-                Browse the directory →
-              </a>
-            </div>
-            <div className="directory-card">
+              <span className="go">Browse the directory →</span>
+            </Link>
+            <Link className="directory-card" href="/doing-good">
               <span className="n num">96</span>
               <span className="name">causes vetted</span>
-              <a className="go" href="/doing-good">
-                Browse the directory →
-              </a>
-            </div>
-            <div className="directory-card">
+              <span className="go">Browse the directory →</span>
+            </Link>
+            <Link className="directory-card" href="/good-living">
               <span className="n num">210</span>
               <span className="name">Good Living guides</span>
-              <a className="go" href="/good-living">
-                Browse the directory →
-              </a>
-            </div>
+              <span className="go">Browse the directory →</span>
+            </Link>
           </div>
         </div>
       </section>
